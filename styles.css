@@ -63,7 +63,9 @@ justify-self:start;
 /*    margin:auto;*/
     width:100%;
     display: grid;
-    grid-template-columns: repeat (2, 1fr);
+/*    grid-template-columns: max-content 1fr;*/
+
+    grid-template-columns: repeat (2, min-content);
     grid-template-rows: repeat (3, min-content);
     grid-column-gap: 3vw;
     font-family: monospace;
@@ -94,8 +96,8 @@ padding: 0;
     background-color: rgba(122,122,300,.7);
     margin-right: calc(-1* var(--left-inset));
     margin-left: calc(-1* var(--left-inset));
-    padding-right: var(--left-inset);
-    padding-left: var(--left-inset);
+/*    padding-right: var(--left-inset);*/
+    padding: calc(var(--left-inset)/2) var(--left-inset);
 }
 
 /*
