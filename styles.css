@@ -4,8 +4,10 @@
     font-family: monospace;
 }
 
-html{
-width:100%;}
+html, body{
+    width:100%;
+    margin: 0;
+    padding: 0;}
 
 :root{
 --nav-font-size: calc(20px + 1.6vw);
@@ -52,24 +54,36 @@ width:100%;}
 /*    position: relative;*/
 /*    margin:auto;*/
     width:100%;
-/*    display: grid;*/
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: auto;
-    grid-column-gap: 0;
+    display: grid;
+    grid-template-columns: repeat (2, max-content);
+    grid-template-rows: repeat (3, min-content);
+    grid-column-gap: 3vw;
     font-family: monospace;
-    font-size: calc(var(--nav-font-size) * .8);
+    font-size: calc(var(--nav-font-size) * .6);
 /*    text-align: justify-all;*/
-    margin-top: calc(var(--nav-font-size) + calc((5px + .4vh) / 2) + calc((5px + .4vh) / 2) + calc(4px + .3vh) + calc(4px + .3vh) + 1.8vw);
-    padding-left: 1.8vw;
-    }
+    margin-top: calc(var(--nav-font-size) + calc((5px + .4vh) / 2) + calc((5px + .4vh) / 2) + calc(4px + .3vh) + calc(4px + .3vh));
+    
+    /*To do: rework padding-left to ensure #objective inset matches #navbar:first-child inset*/
+    padding: 1.8vw 3vw;
+    
+    background: rgba(122, 122, 300, .4);
+    border-bottom: 1px solid black;
+    
+    text-align: justify;
+/*
+    column-count: 2;
+    column-gap: 3vw
+*/
+}
 
 #objective p{
 margin: 0;
 padding: 0;
-/*
-float: left;
-width: 70%;
-*/
+}
+
+#objective p:nth-child(2){
+    grid-area: 2 / 2 / 3 / 3;
+/*    text-align: right;*/
 }
 /*
 main {
