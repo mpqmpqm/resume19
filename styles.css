@@ -11,6 +11,7 @@ html, body{
 
 :root{
 --nav-font-size: calc(20px + 1.6vw);
+--left-inset: 3vw;
 }
 
 #navbar {
@@ -20,13 +21,13 @@ html, body{
     left: 0;
     display: flex;
 /*    flex-wrap: wrap;*/
-    justify-content: space-around;
-/*    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;*/
+    justify-content: space-between;
+/*    grid-template-columns: repeat(6, min-content);*/
 /*    grid-template-rows: auto;*/
     margin: 0;
-    padding: 0;
+    padding: 0 3vw;
     background-color: white;
-/*    grid-column-gap: calc((5px + .4vh)/2);*/
+    grid-column-gap: 3vw;
     font-family: monospace;
     font-size: var(--nav-font-size);
 /*    border: 1px solid black;*/
@@ -37,11 +38,18 @@ html, body{
     
 #navbar li {
     display:inline-block;
-    text-align: center;
+    justify-self: center;
+/*    text-align: center;*/
 /*    align-self: center;*/
     padding: calc(4px + .3vh);
 /*    border: 1px solid black;*/
     background-color: white;
+/*    padding: 0 1vw;*/
+}
+
+#navbar li:first-child{
+justify-self:start;
+    padding-left: 0;
 }
 
 #navbar li a:hover {
@@ -55,7 +63,7 @@ html, body{
 /*    margin:auto;*/
     width:100%;
     display: grid;
-    grid-template-columns: repeat (2, max-content);
+    grid-template-columns: repeat (2, 1fr);
     grid-template-rows: repeat (3, min-content);
     grid-column-gap: 3vw;
     font-family: monospace;
@@ -64,7 +72,7 @@ html, body{
     margin-top: calc(var(--nav-font-size) + calc((5px + .4vh) / 2) + calc((5px + .4vh) / 2) + calc(4px + .3vh) + calc(4px + .3vh));
     
     /*To do: rework padding-left to ensure #objective inset matches #navbar:first-child inset*/
-    padding: 1.8vw 3vw;
+    padding: 1.8vw var(--left-inset);
     
     background: rgba(122, 122, 300, .4);
     border-bottom: 1px solid black;
@@ -83,8 +91,13 @@ padding: 0;
 
 #objective p:nth-child(2){
     grid-area: 2 / 2 / 3 / 3;
-/*    text-align: right;*/
+    background-color: rgba(122,122,300,.7);
+    margin-right: calc(-1* var(--left-inset));
+    margin-left: calc(-1* var(--left-inset));
+    padding-right: var(--left-inset);
+    padding-left: var(--left-inset);
 }
+
 /*
 main {
     
