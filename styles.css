@@ -91,6 +91,7 @@ justify-self:start;
 margin: 0;
 padding: 3vw 0;
     border-bottom: 1px solid black;
+    z-index: 2;
 }
 
 #objective p:first-child{
