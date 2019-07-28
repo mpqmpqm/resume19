@@ -4,7 +4,11 @@ html, html * {
 
 nav div {
     min-width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     min-height: 50vh;
     text-align: center;
     line-height: 50vh;
+    font-size: 22vw;
+    font-family: Times, serif;
 }
