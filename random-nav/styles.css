@@ -3,7 +3,7 @@ html * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Cormorant', serif;
+    font-family: Times, 'Cormorant', serif;
     overflow: hidden;
     min-width: 100%;
     max-width: 100%;
@@ -23,7 +23,7 @@ header {
 nav div {
     min-height: 48vh;
     line-height: 48vh;
-    font-size: 28vw;
+    font-size: 24vw;
     /*    font-weight: 400;*/
 }
 
