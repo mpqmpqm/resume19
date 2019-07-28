@@ -1,6 +1,8 @@
 html, html * {
     margin: 0;
-    padding: 0;}
+    padding: 0;
+    box-sizing: border-box;
+}
 
 nav div {
     min-width: 100%;
@@ -8,7 +10,15 @@ nav div {
     overflow: hidden;
     min-height: 50vh;
     text-align: center;
-    line-height: 50vh;
-    font-size: 22vw;
-    font-family: Times, serif;
+    line-height: 48vh;
+    font-size: 20vw;
+    font-family: Times, serif; 
+}
+
+nav div:first-child{
+    border-bottom: 1px solid black;
+}
+
+div a {
+    text-decoration: none;
 }
