@@ -1,4 +1,5 @@
-html, html * {
+html,
+html * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,10 +13,11 @@ nav div {
     text-align: center;
     line-height: 48vh;
     font-size: 20vw;
-    font-family: Times, serif; 
+    font-family: 'Cormorant', serif;
+/*    font-weight: 400;*/
 }
 
-nav div:first-child{
+nav div:first-child {
     border-bottom: 1px solid black;
 }
 
