@@ -3,18 +3,28 @@ html * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Cormorant', serif;
+    overflow: hidden;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+
+
+}
+
+header {
+    max-height: 4vh;
+    font-size: 3vh;
+    border-bottom: 1px solid black;
+    padding-bottom: 1vh;
+
 }
 
 nav div {
-    min-width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    min-height: 50vh;
-    text-align: center;
+    min-height: 48vh;
     line-height: 48vh;
-    font-size: 20vw;
-    font-family: 'Cormorant', serif;
-/*    font-weight: 400;*/
+    font-size: 32vh;
+    /*    font-weight: 400;*/
 }
 
 nav div:first-child {
