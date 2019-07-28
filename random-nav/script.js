@@ -10,13 +10,13 @@ function assignButtons() {
     console.log(decider);
     
     if (decider == 0) {
-        randButton[0].innerHTML = "<a href='https://mpqmpqm.github.io/'>MP(Q?)</a>";
-        randButton[1].innerHTML = "<a href='#'>MPQ</a>";
+        randButton[0].innerHTML = "<a href='https://www.instagram.com/mpqmpqm/'>MP(Q?)</a>";
+        randButton[1].innerHTML = "<a href='https://mpqmpqm.github.io/'>MPQ</a>";
     }
     
     else {
-        randButton[1].innerHTML = "<a href='https://mpqmpqm.github.io/'>MP(Q?)</a>";
-        randButton[0].innerHTML = "<a href='#'>MPQ</a>";
+        randButton[1].innerHTML = "<a href='https://www.instagram.com/mpqmpqm/'>MP(Q?)</a>";
+        randButton[0].innerHTML = "<a href='https://mpqmpqm.github.io/'>MPQ</a>";
     }
 }
     
