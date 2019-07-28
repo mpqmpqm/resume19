@@ -1,6 +1,6 @@
 var lis = document.querySelectorAll('div');
 var x;
-var phrase = ['omg', 'lol', 'no&nbsp;way!', 'so&nbsp;cool!', 'wow!', 'amayz']
+var phrase = ['omg', 'lol', 'no&nbsp;way!', 'so&nbsp;cool!', 'wow!', 'amayz', 'siqq']
 
 function colorReload (){
 
@@ -12,7 +12,7 @@ for (x of lis) {
     x.setAttribute("style", randomColor);
     
     
-    var randomPhrase = phrase[Math.floor(Math.random() * 6)]
+    var randomPhrase = phrase[Math.floor(Math.random() * 7)]
     
     x.innerHTML = randomPhrase;
 
