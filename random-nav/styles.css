@@ -3,7 +3,7 @@ html * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Times, 'Cormorant', serif;
+    font-family: 'Cormorant', serif;
     overflow: hidden;
     min-width: 100%;
     max-width: 100%;
@@ -13,16 +13,16 @@ html * {
 }
 
 header {
-    max-height: 4vh;
-    font-size: 3vh;
+    max-height: 8vh;
+    font-size: 6vh;
     border-bottom: 1px solid black;
-    padding-bottom: 1vh;
+    padding-bottom: 2vh;
 
 }
 
 nav div {
-    min-height: 48vh;
-    line-height: 48vh;
+    min-height: 46vh;
+    line-height: 46vh;
     font-size: 24vw;
     /*    font-weight: 400;*/
 }
