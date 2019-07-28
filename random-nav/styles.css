@@ -13,16 +13,16 @@ html * {
 }
 
 header {
-    max-height: 8vh;
+    max-height: 10vh;
     font-size: 6vh;
     border-bottom: 1px solid black;
-    padding-bottom: 2vh;
+    padding: 2vh 0;
 
 }
 
 nav div {
-    min-height: 46vh;
-    line-height: 46vh;
+    min-height: 45vh;
+    line-height: 45vh;
     font-size: 24vw;
     /*    font-weight: 400;*/
 }
