@@ -1,6 +1,6 @@
 var lis = document.querySelectorAll('div');
 var x;
-var phrase = ['omg', 'lol', 'no way!', 'so cool!', 'wow!', 'amayz']
+var phrase = ['omg', 'lol', 'no&nbsp;way!', 'so&nbsp;cool!', 'wow!', 'amayz']
 
 function colorReload (){
 
