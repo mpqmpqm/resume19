@@ -10,7 +10,7 @@ html, body{
     padding: 0;}
 
 :root{
---nav-font-size: calc(20px + 1.6vw);
+--nav-font-size: 24px;
 --left-inset: 3vw;
 }
 
