@@ -1,6 +1,5 @@
 var randButton = document.querySelectorAll('div');
 
-
 console.log(randButton[1]);
 console.log(randButton[0]);
 
@@ -20,4 +19,4 @@ function assignButtons() {
     }
 }
     
-window.setInterval(assignButtons, 710);
+window.setInterval(assignButtons, 680);
