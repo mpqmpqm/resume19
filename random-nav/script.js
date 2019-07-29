@@ -20,4 +20,4 @@ function assignButtons() {
     }
 }
     
-window.setInterval(assignButtons, 540);
+window.setInterval(assignButtons, 710);
