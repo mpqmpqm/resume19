@@ -24,9 +24,7 @@ li {
 	text-align: center;
 	scroll-snap-align: start;
 	height: 100vh;
-	// display: flex;
-	// flex-flow: column;
-	// justify-content: center;
+	
 }
 
 #parent {
