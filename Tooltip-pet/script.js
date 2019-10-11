@@ -19,7 +19,7 @@ const handlers = {
 function hideTip (nodeTargetId) {
     let queryHelper = `.node:nth-child(` + nodeTargetId + `) > .node-info`;
     let nodeTargetedInfo = document.querySelector(queryHelper);
-    nodeTargetedInfo.style.display = `none`;     
+    nodeTargetedInfo.style.opacity = `0`;     
     }
 
 
@@ -28,7 +28,7 @@ function displayTip(nodeTargetId) {
     let nodeTargetedInfo = document.querySelector(queryHelper);
     // let displayStyle = getComputedStyle(nodeTargetedInfo).display;
     // console.log(displayStyle);
-    nodeTargetedInfo.style.display = `block`;
+    nodeTargetedInfo.style.opacity = `1`;
 }
 
 frame.addEventListener(`mouseover`, handlers.hover);
