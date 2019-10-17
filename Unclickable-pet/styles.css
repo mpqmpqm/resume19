@@ -1,0 +1,30 @@
+* {
+    /* box-sizing: border-box; */
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+}
+
+.z {
+    height: 92%;
+    width: 1000px;
+    top: 2%;
+    left: 2%;
+    position: absolute;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+#escapist {
+    top: 300px;
+    left: 400px;
+    position: relative;
+    display: inline;
+    /* border: 1px solid black; */
+    transition: top .07s, left .07s;
+    padding: 60px;
+}
