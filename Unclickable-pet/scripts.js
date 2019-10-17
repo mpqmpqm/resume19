@@ -1,6 +1,6 @@
 const escaper = document.querySelector(`#escapist`);
 
-alert(`A prize awaits behind the link! Moused devices only.`);
+// alert(`A prize awaits behind the link! Moused devices only.`);
 
 escaper.addEventListener(`mouseover`, function () {
 
@@ -21,7 +21,19 @@ escaper.addEventListener(`mouseover`, function () {
 
     for (let i = 0; i < 100; i++) {
 
-        if (topRandomDelta >= 400){
+        if (Math.random() > .9){
+            if (topRandomDelta >= 400){
+                break;
+            }
+        }
+
+        if (Math.random() > .4){
+            if (topRandomDelta >= 500){
+                break;
+            }
+        }
+
+        if (topRandomDelta >= 600){
             break;
         }
         let topRandomCompete = Math.floor(Math.random() * 630)
@@ -55,8 +67,14 @@ escaper.addEventListener(`mouseover`, function () {
 
     for (let i = 0; i < 100; i++) {
 
-        if (Math.random() > .4){
-            if (leftRandomDelta >= 160){
+        if (Math.random() > .7){
+            if (leftRandomDelta >= 50){
+                break;
+            }
+        }
+
+        if (Math.random() > .2){
+            if (leftRandomDelta >= 200){
                 break;
             }
         }
