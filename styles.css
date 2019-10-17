@@ -1,6 +1,6 @@
 * {
-    font-family: monospace;
-    font-size: 16px;
+    font-family:'Roboto Mono', monospace;
+    font-size: 14px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -21,8 +21,8 @@ body {
     left: -2%;
     color: red;
     z-index: 1;
-    font-size: 40vw;
-    font-weight: 900;
+    font-size: 36vw;
+    /* font-weight: 900; */
     transform: rotate(-12deg);
     transition: color .8s;
 }
@@ -94,7 +94,7 @@ p {
 }
 
 #projects a {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 #soundcloud {
@@ -130,6 +130,6 @@ p {
     }
 
     #projects a {
-        font-size: 24px;
+        font-size: 22px;
     }
 }
