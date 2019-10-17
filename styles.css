@@ -72,7 +72,7 @@ p {
 }
 
 #cute-photo {
-    width:100%;
+    width: 100%;
     position: fixed;
     top: -10%;
     right: -24%;
@@ -96,3 +96,21 @@ p {
     font-size: 32px;
 }
 
+@media only screen and (orientation: portrait) {
+    #name-deco {
+        top: 2%;
+        transform: rotate(-8deg);
+        font-size: 62vw;
+    }
+
+    #cute-photo {
+        top: 28%;
+        width: 140%;
+        right: -42%
+    }
+
+    #projects {
+        bottom: 2%;
+        width: 54%;
+    }
+}
