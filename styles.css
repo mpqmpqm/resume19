@@ -96,6 +96,18 @@ p {
     font-size: 32px;
 }
 
+#soundcloud {
+    background: url(assets/soundcloud.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 80px;
+    position: fixed;
+    right: 4%;
+    bottom: 4%;
+}
+
+
 @media only screen and (orientation: portrait) {
     #name-deco {
         top: 2%;
