@@ -1,16 +1,6 @@
 const container = document.querySelector(`body`);
 const box = document.getElementById(`box`);
 
-function start (){
-    setDimensions();
-    let app = setInterval(setPlot, 1000);
-}
-
-function reset (){
-    clearInterval(app);
-    // catch{clearInterval(app);};
-    start();
-}
 function setDimensions (){
     let containerHeight = window.innerHeight;
     container.style.height = containerHeight;
@@ -44,8 +34,9 @@ let maxCoord = function(axis){
     }
 }
 
-window.addEventListener(`resize`, reset);
-start();
+window.addEventListener(`resize`, setDimensions);
+setDimensions();
+let app = setInterval(setPlot, 1000);
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min);
