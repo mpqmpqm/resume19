@@ -93,6 +93,11 @@ p {
     text-align: right;
 }
 
+#projects ul {
+    max-height: 290px;
+    overflow: auto;
+}
+
 #projects a {
     font-size: 26px;
 }
@@ -106,6 +111,10 @@ p {
     position: fixed;
     right: 4%;
     bottom: 4%;
+}
+
+*::-webkit-scrollbar{
+    width:0;
 }
 
 
