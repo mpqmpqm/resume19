@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: absolute;
+    overflow: hidden;
+}
+
+#box {
+    /* width: 100px;
+    height: 100px; */
+    /* border: 1px solid black; */
+    transition: top 1s, left 1s;
+    position: relative;
+    background: coral;
+    top: 0;
+    left: 100px;
+}
