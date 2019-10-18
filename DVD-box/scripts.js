@@ -1,5 +1,5 @@
-let container = document.querySelector(`body`);
-let box = document.getElementById(`box`);
+const container = document.querySelector(`body`);
+const box = document.getElementById(`box`);
 
 function start (){
     setDimensions();
