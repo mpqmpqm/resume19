@@ -2,7 +2,12 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    font-size:1.4rem;
+    font-size:1.2rem;
+    /* font-family: 'Nanum Myeongjo', serif; */
+    font-family: 'Cormorant', serif;
+    /* font-family: 'Marcellus', serif; */
+    /* font-family: 'Libre Caslon Display', serif; */
+    /* font-family: 'Cormorant Infant', serif; */
 }
 
 main {
@@ -12,7 +17,7 @@ main {
     /* border: 1px solid salmon; */
     grid-template-rows: 6% 92% 2%; 
     grid-template-columns: 81% 19%;
-    padding: 0 3% 0 1%;
+    padding: 0 2% 0 1%;
     gap: 0 1%;
     background-color: beige;
 }
@@ -27,8 +32,8 @@ nav ul {
     flex-direction: row;
     width: 100%;
     position: absolute;
-    bottom:0;
-    /* text-align: center; */
+    bottom:10%;
+    /* justify-content: flex-end;    text-align: center; */
 }
 
 nav ul li {
@@ -68,6 +73,11 @@ nav ul li {
     width: 100%;
     object-fit: contain;
 }
+
+#teaser img:first-child, #teaser img:last-child {
+    object-fit: cover;
+}
+
 #teaser > div:first-child{
     margin-top: 0;
 }
@@ -90,7 +100,7 @@ nav ul li {
 #fullView img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: left;
     transition: display 1s;
 }

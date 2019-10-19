@@ -9,24 +9,28 @@ const showFull = {
     },
 
     setSrc: function (event){
-        let newSrc = event.target.getAttribute(`src`)
-        fullView.setAttribute(`src`, newSrc);
+        if (event.target.tagName == `IMG`){
+            let newSrc = event.target.getAttribute(`src`);
+            fullView.setAttribute(`src`, newSrc);
+    }
     },
 
     setPlace: function (){
         
         let clicked = event.target;
 
-        if (getComputedStyle(clicked).width.slice(0,-2)>getComputedStyle(clicked).height.slice(0,-2)){
-            fullView.style.objectPosition = `left`;
-            // fullView.style.objectFit = `cover`;
-        }
+        if (clicked.tagName ==`IMG`){
 
-        else{
-            fullView.style.objectPosition = `center`;
-            fullView.style.objectFit = `contain`;
+            if (getComputedStyle(clicked).width.slice(0,-2)>getComputedStyle(clicked).height.slice(0,-2)){
+                fullView.style.objectPosition = `left`;
+                fullView.style.objectFit = `cover`;
+            }
+
+            else{
+                fullView.style.objectPosition = `center`;
+                fullView.style.objectFit = `contain`;
+            }
         }
-    }
 
     //     if (getComputedStyle(fullView).width.slice(0,-2) > getComputedStyle(fullView).height.slice(0,-2))
     //     {
@@ -36,7 +40,7 @@ const showFull = {
     //         fullView.style.objectPosition = `center`;
     //     }
     // }
-}
+}}
 
 teaserReel.addEventListener(`click`, showFull.display);
 // function showFull (event){
