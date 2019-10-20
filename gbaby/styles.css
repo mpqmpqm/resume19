@@ -73,15 +73,13 @@ nav ul li {
     }
 
 #teaser::-webkit-scrollbar-thumb{
-    background: rgba(0, 0, 0, 0.589);
+    background: rgba(0, 0, 0, 0.6);
     /* border-radius: 4px; */
-    
-    
 }
 
-/* #teaser::-webkit-scrollbar-track{
-    background: fuchsia;
-} */
+#teaser::-webkit-scrollbar-track{
+    background: rgba(0, 0, 0, 0.100);
+}
 
 
 #teaser > * {
