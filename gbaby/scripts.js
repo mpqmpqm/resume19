@@ -22,8 +22,8 @@ const showFull = {
         if (clicked.tagName ==`IMG`){
 
             if (getComputedStyle(clicked).width.slice(0,-2)>getComputedStyle(clicked).height.slice(0,-2)){
-                fullView.style.objectPosition = `left`;
-                fullView.style.objectFit = `cover`;
+                fullView.style.objectPosition = `center`;
+                fullView.style.objectFit = `contain`;
             }
 
             else{
@@ -42,7 +42,15 @@ const showFull = {
     // }
 }}
 
+function pointer (event){
+    if (event.target.tagName==`IMG`){
+        event.target.style.cursor = `pointer`;
+    }
+}
+
 teaserReel.addEventListener(`click`, showFull.display);
+
+teaserReel.addEventListener(`mouseover`, pointer)
 // function showFull (event){
 //     let newSrc = event.target.getAttribute(`src`)
     
