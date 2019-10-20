@@ -14,5 +14,5 @@ line {
     stroke-width: 0.2px;
     stroke: blue;
     opacity: 1;
-    transition: stroke-width .9s;
+    transition: stroke-width .95s;
 }
