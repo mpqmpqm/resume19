@@ -61,7 +61,7 @@ nav ul li {
 #teaser > * {
     max-width: 100%;
     /* background-color: salmon ; */
-    margin: 4% 0;
+    margin: 3% 0;
     /* flex-basis: 40%; */
     /* height: 200px; */
     flex-shrink: 0;
