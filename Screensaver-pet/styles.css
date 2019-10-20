@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+svg {
+    /* border: 1px solid red; */
+    height: 100px;
+}
+
+line {
+    stroke-width: 0.2px;
+    stroke: blue;
+    opacity: 1;
+    /* transition: stroke-width 1.4s; */
+}

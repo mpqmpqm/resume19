@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+div:first-child{
+    background: red;
+}
+
+div:nth-child(2){
+    background: blue;
+}
+
+div:nth-child(3){
+    background:yellow;
+}
