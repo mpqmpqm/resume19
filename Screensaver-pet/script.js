@@ -71,7 +71,7 @@ function drawCool () {
     let top = 0
     let bottom = 100;
 
-    for (i=0; i<101; i++){
+    for (i=0; i<100; i++){
         newLineCool([left + `%`, top + `%`, right + `%`, bottom +`%`]);
         // left++;
         // right--;
@@ -85,7 +85,7 @@ function drawCool () {
     left = 100;
     right = 0;
 
-    for (i=0; i<101; i++){
+    for (i=0; i<100; i++){
         newLineCool([left + `%`, top + `%`, right + `%`, bottom +`%`]);
         left--;
         right++;
@@ -120,12 +120,21 @@ const lines = Array.from(field.querySelectorAll(`line`));
 
 function strokeSwitch (x){
     
-    if (getComputedStyle(lines[x]).strokeWidth == `0.2px` ){
-                lines[x].style.strokeWidth = `4px`;
+    if (getComputedStyle(lines[x]).strokeWidth == `0.3px` ){
+            lines[x].style.strokeWidth = `2px`;
+            
+            // if (getComputedStyle(lines[x]).stroke == `rgb(255, 0, 0)`){
+            //     lines[x].style.stroke = `rgb(0, 0, 255)`;
+            // }
+
+            // else {
+            //     lines[x].style.stroke = `rgb(255, 0, 0)`; 
+            // }
     }
 
     else {
-        lines[x].style.strokeWidth = `0.2px`;
+        lines[x].style.strokeWidth = `0.3px`;
+        
     }
 
 }
@@ -135,12 +144,21 @@ function same (x){
 }
 
 
+setInterval(function(){
+    if (getComputedStyle(document.getElementById(`canvas`)).backgroundColor==`rgb(0, 0, 255)`){
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`
+    }
+    
+    else{
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`
+    }
+},2000)
 
 // setInterval(same, 1000, `yay`);
 // setTimeout(setInterval, 1000, same, 1000, `ok`);
 
-for (let i = 0; i<201; i++){
-    setTimeout(setInterval, 2000-i*10, strokeSwitch, 1000, i);
+for (let i = 0; i<200; i++){
+    setTimeout(setInterval, 1000-i*5, strokeSwitch, 100, i);
     // setTimeout(setInterval, 0, colorSet.box1Set, 3000);
 }
 
@@ -165,3 +183,5 @@ for (let i = 0; i<201; i++){
     
 //     lines.forEach(line => {line.style.strokeWidth = `.2px`});
 // }
+
+console.log(lines.length);
