@@ -11,7 +11,7 @@ svg {
 }
 
 line {
-    stroke-width: 0.2px;
+    stroke-width: .2px;
     stroke: blue;
     opacity: 1;
     transition: stroke-width .95s;

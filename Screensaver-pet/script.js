@@ -121,7 +121,7 @@ const lines = Array.from(field.querySelectorAll(`line`));
 function strokeSwitch (x){
     
     if (getComputedStyle(lines[x]).strokeWidth == `0.2px` ){
-                lines[x].style.strokeWidth = `1.8px`;
+                lines[x].style.strokeWidth = `4px`;
     }
 
     else {
