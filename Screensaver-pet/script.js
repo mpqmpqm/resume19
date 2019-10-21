@@ -55,7 +55,7 @@ function newLineCool(array){
 
 
     field.append(line);
-    forceRefresh();
+    
 }
 
 
@@ -71,12 +71,12 @@ function drawCool () {
     let top = 0
     let bottom = 100;
 
-    for (i=0; i<100; i++){
+    for (i=0; i<25; i++){
         newLineCool([left + `%`, top + `%`, right + `%`, bottom +`%`]);
         // left++;
         // right--;
-        top++;
-        bottom--;
+        top+=4;
+        bottom-=4;
     }
 
     top = 0;
@@ -85,11 +85,13 @@ function drawCool () {
     left = 100;
     right = 0;
 
-    for (i=0; i<100; i++){
+    for (i=0; i<25; i++){
         newLineCool([left + `%`, top + `%`, right + `%`, bottom +`%`]);
-        left--;
-        right++;
+        left-=4;
+        right+=4;
     }
+
+    forceRefresh();
 
 
 }
@@ -120,8 +122,8 @@ const lines = Array.from(field.querySelectorAll(`line`));
 
 function strokeSwitch (x){
     
-    if (getComputedStyle(lines[x]).strokeWidth == `0.3px` ){
-            lines[x].style.strokeWidth = `2px`;
+    if (lines[x].zeroSwitch){
+            lines[x].style.opacity = `1`;
             
             // if (getComputedStyle(lines[x]).stroke == `rgb(255, 0, 0)`){
             //     lines[x].style.stroke = `rgb(0, 0, 255)`;
@@ -133,32 +135,40 @@ function strokeSwitch (x){
     }
 
     else {
-        lines[x].style.strokeWidth = `0.3px`;
-        
+        lines[x].style.opacity = `0`;
     }
 
+    lines[x].zeroSwitch = !lines[x].zeroSwitch;
 }
 
-function same (x){
-    console.log(x);
-}
 
 
 setInterval(function(){
-    if (getComputedStyle(document.getElementById(`canvas`)).backgroundColor==`rgb(0, 0, 255)`){
-        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`
+    if (document.getElementById(`canvas`).zeroSwitch){
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(255, 255, 255)`;
+        lines.forEach(elem => {
+            elem.style.stroke = `rgb(0, 0, 0)`
+        })
+        // getComputedStyle(document.querySelector(`line`)).style.stroke = `rgb(255, 255, 255)`
     }
     
     else{
-        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`
+        lines.forEach(elem => {
+            elem.style.stroke = `rgb(255, 255, 255)`
+        })
     }
-},2000)
+
+    document.getElementById(`canvas`).zeroSwitch = !document.getElementById(`canvas`).zeroSwitch
+},1400);
 
 // setInterval(same, 1000, `yay`);
 // setTimeout(setInterval, 1000, same, 1000, `ok`);
 
-for (let i = 0; i<200; i++){
-    setTimeout(setInterval, 1000-i*5, strokeSwitch, 100, i);
+// let zeroSwitch = true;
+
+for (let i = 0; i<50; i++){
+    setTimeout(setInterval, 1000-i*20, strokeSwitch, 100, i);
     // setTimeout(setInterval, 0, colorSet.box1Set, 3000);
 }
 
