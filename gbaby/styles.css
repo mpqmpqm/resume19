@@ -73,7 +73,7 @@ nav ul li {
     }
 
 #teaser::-webkit-scrollbar-thumb{
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     /* border-radius: 4px; */
 }
 
