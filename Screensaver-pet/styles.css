@@ -6,14 +6,14 @@
 }
 
 svg {
-    /* background:blue; */
-    transition: background-color .6s;
+    background:blue;
+    transition: background-color .4s;
 }
 
 line {
-    stroke-width: 6px;
-    stroke:black;
-    transition: stroke .6s;
-    opacity: 0;
+    stroke-width: 2px;
+    stroke:white;
+    /* transition: stroke .6s; */
+    opacity: 1;
     /* transition: stroke-width .95s; */
 }
