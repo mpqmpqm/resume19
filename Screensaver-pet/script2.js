@@ -70,14 +70,14 @@ function cascade (lines) {
     
 
     for (i = 0; i < lines.length; i++) {
-        setTimeout(strokeSwitch, 4000 - i * 10, i);
+        setTimeout(strokeSwitch, 2000 - i * 5, i);
     }
-    
+
 }
 
 drawLines(400);
 const lines = Array.from(field.querySelectorAll(`line`));
-setInterval (cascade, 200, lines);
+setInterval (cascade, 100, lines);
 
 setInterval(function(){
     if (document.getElementById(`canvas`).zeroSwitch){
