@@ -88,8 +88,6 @@ setInterval(function(){
     }
 
     document.getElementById(`canvas`).zeroSwitch = !document.getElementById(`canvas`).zeroSwitch
-},100);
-// cascade (lines);
+},400);
 
 
-// setTimeout (cascade, 6000, lines);
