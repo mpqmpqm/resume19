@@ -5,9 +5,32 @@
     overflow: hidden;
 }
 
+#warning {
+    text-align: center;
+    background: white;
+    position: absolute;
+    z-index: 2;
+    /* top: 30%; */
+    /* top: 30%; */
+    height: 100%;
+    width: 100%;
+    padding-top: 14%;
+    font-size: 1.4rem;
+    /* display: none; */
+}
+
+
+button {
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+
+
 svg {
     background:blue;
     transition: background-color .4s;
+    position: fixed;
 }
 
 line {

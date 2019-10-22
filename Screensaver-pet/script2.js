@@ -1,12 +1,16 @@
 const field = document.querySelector(`svg`);
+const warning = document.querySelector(`#warning`);
 
 function setField (){
     field.style.height = window.innerHeight;
     field.style.width = window.innerWidth;
+    warning.style.height = window.innerHeight;
+    warning.style.width = window.innerWidth;
 }
 
 setField();
 window.addEventListener(`resize`, setField);
+warning.addEventListener(`click`, passWarning);
 
 function drawLine (x1, y1, x2, y2) {
     let line = document.createElement(`line`);
@@ -77,7 +81,12 @@ function cascade (lines) {
 
 drawLines(400);
 const lines = Array.from(field.querySelectorAll(`line`));
-setInterval (cascade, 100, lines);
+
+function passWarning () {
+    document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
+    
+    setInterval (cascade, 100, lines);
+}
 
 setInterval(function(){
     if (document.getElementById(`canvas`).zeroSwitch){
