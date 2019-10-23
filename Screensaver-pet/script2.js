@@ -1,5 +1,5 @@
 const field = document.querySelector(`svg`);
-const warning = document.querySelector(`#warning`);
+const warningButton = document.querySelector(`button`);
 
 function setField (){
     field.style.height = window.innerHeight;
@@ -10,7 +10,7 @@ function setField (){
 
 setField();
 window.addEventListener(`resize`, setField);
-warning.addEventListener(`click`, passWarning);
+warningButton.addEventListener(`click`, passWarning);
 
 //svg lines are drawn from (x1, y1) to (x2, y2)
 function drawLine (x1, y1, x2, y2) {
@@ -61,9 +61,9 @@ function drawLines (lineCount) {
 }
 
 //switch the opacity of a line to the opposite of what it was
-function strokeSwitch (line) {
+function strokeSwitch (line, zeroSwitch) {
 
-    if (lines[line].zeroSwitch) {
+    if (zeroSwitch) {
         lines[line].style.opacity = `1`;
     }
 
@@ -71,17 +71,19 @@ function strokeSwitch (line) {
         lines[line].style.opacity = `0`;
     }
 
-    lines[line].zeroSwitch = !lines[line].zeroSwitch;
-
 }
 
+//track last operation on opacity, without accessing properties of individual lines.
+let zeroSwitch = true;
 //lines switch opacity one after the other
 function cascade (lines) {
     
+    //schedule lines.length calls of strokeSwitch. Each call will execute 5ms after the previous. Starting with a 2s delay and working down makes the effect go clockwise, which I prefer.
     for (i = 0; i < lines.length; i++) {
-        setTimeout(strokeSwitch, 2000-i*5 , i);
+        setTimeout(strokeSwitch, 2000-i*5 , i, zeroSwitch);
     }
-
+    //schedule the opposite effect for the next call of this function
+    zeroSwitch = !zeroSwitch;
 }
 
 drawLines(400);
@@ -90,22 +92,24 @@ const lines = Array.from(field.querySelectorAll(`line`));
 function passWarning () {
     //remove warning when button is clicked
     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
+
+    //remove warning css
+    document.styleSheets[0].deleteRule(0);
+
     //start the animation
     setInterval (cascade, 100, lines);
 }
 
 // switch background color
-let zeroSwitch = true;
-
+let backgroundSwitch;
 setInterval(function(){
-    if (zeroSwitch){
+    if (backgroundSwitch){
         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`;}
     
     else{
         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`;
     }
-
-    zeroSwitch = !zeroSwitch
+    backgroundSwitch = !backgroundSwitch;
 },400);
 
 

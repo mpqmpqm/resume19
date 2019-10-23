@@ -1,42 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
 #warning {
     text-align: center;
     background: white;
     position: absolute;
     z-index: 2;
-    /* top: 30%; */
-    /* top: 30%; */
     height: 100%;
     width: 100%;
     padding-top: 14%;
-    font-size: 1.4rem;
-    /* display: none; */
+    font-size: 1.6rem;
 }
 
-
-button {
-    margin-top: 2rem;
-    font-size: 2rem;
+body{
+    overflow: hidden;
+    margin: 0;
 }
-
 
 
 svg {
     background:blue;
     transition: background-color .4s;
-    position: fixed;
 }
 
 line {
     stroke-width: 2px;
     stroke:white;
-    /* transition: stroke .6s; */
     opacity: 1;
-    /* transition: stroke-width .95s; */
+    /* will-change: opacity; */
 }
