@@ -12,6 +12,7 @@ setField();
 window.addEventListener(`resize`, setField);
 warning.addEventListener(`click`, passWarning);
 
+//svg lines are drawn from (x1, y1) to (x2, y2)
 function drawLine (x1, y1, x2, y2) {
     let line = document.createElement(`line`);
     
