@@ -23,11 +23,13 @@ function drawLine (x1, y1, x2, y2) {
     field.append(line);
 } 
 
+//force a redraw of parent svg after line children are appended
 function forceRefresh(){
     let fieldCurrent = field.innerHTML;
     field.innerHTML = fieldCurrent; 
 }
 
+//call drawLine at x, y percentage intervals
 function drawLines (lineCount) {
     
     let left = 0;
@@ -52,10 +54,12 @@ function drawLines (lineCount) {
         right += 100 / (lineCount / 2); 
     }
 
+    //force redraw
     forceRefresh();
 
 }
 
+//switch the opacity of a line to the opposite of what it was
 function strokeSwitch (line) {
 
     if (lines[line].zeroSwitch) {
@@ -70,11 +74,11 @@ function strokeSwitch (line) {
 
 }
 
+//lines switch opacity one after the other
 function cascade (lines) {
     
-
     for (i = 0; i < lines.length; i++) {
-        setTimeout(strokeSwitch, 2000 - i * 5, i);
+        setTimeout(strokeSwitch, 2000-i*5 , i);
     }
 
 }
@@ -83,20 +87,24 @@ drawLines(400);
 const lines = Array.from(field.querySelectorAll(`line`));
 
 function passWarning () {
+    //remove warning when button is clicked
     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
-    
+    //start the animation
     setInterval (cascade, 100, lines);
 }
 
+// switch background color
+let zeroSwitch = true;
+
 setInterval(function(){
-    if (document.getElementById(`canvas`).zeroSwitch){
+    if (zeroSwitch){
         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`;}
     
     else{
         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`;
     }
 
-    document.getElementById(`canvas`).zeroSwitch = !document.getElementById(`canvas`).zeroSwitch
+    zeroSwitch = !zeroSwitch
 },400);
 
 
