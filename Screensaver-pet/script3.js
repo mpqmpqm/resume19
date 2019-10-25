@@ -114,7 +114,7 @@ function rollingOpacityNext(e){
 let same = 0;
 function rollingOpacityInterval () {
     rollingOpacityNext(same);
-    same+=2;
+    same++;
     if (same == 40) {
         same = 0;
     }
@@ -122,6 +122,9 @@ function rollingOpacityInterval () {
 }
 
 rollingOpacityInterval();
+setTimeout(rollingOpacityInterval,100);
+setTimeout(rollingOpacityInterval,100);
+// setTimeout(rollingOpacityInterval,100);
 // function passWarning () {
 //     //remove warning when button is clicked
 //     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
