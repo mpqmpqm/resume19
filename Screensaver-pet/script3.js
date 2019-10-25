@@ -114,7 +114,7 @@ function rollingOpacityNext(e){
 let same = 0;
 function rollingOpacityInterval () {
     rollingOpacityNext(same);
-    same++;
+    same+=2;
     if (same == 40) {
         same = 0;
     }
