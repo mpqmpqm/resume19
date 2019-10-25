@@ -23,6 +23,6 @@ svg {
 line {
     stroke-width: 2px;
     stroke:white;
-    opacity: 1;
+    opacity: 0;
     /* will-change: opacity; */
 }
