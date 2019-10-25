@@ -105,9 +105,9 @@ function opacityNext () {
 opacityStart();
 
 function rollingOpacityNext(e){
-    for (e; e<lines.length-20; e +=40){
+    for (e; e<lines.length; e +=40){
         lines[e].style.opacity = `0`;
-        lines[e+20].style.opacity = `1`; 
+        lines[Math.min(e+20, 399)].style.opacity = `1`; 
     }
 }
 
@@ -115,10 +115,13 @@ let same = 0;
 function rollingOpacityInterval () {
     rollingOpacityNext(same);
     same++;
+    if (same == 40) {
+        same = 0;
+    }
     window.requestAnimationFrame(rollingOpacityInterval);
 }
 
-window.requestAnimationFrame(rollingOpacityInterval);
+rollingOpacityInterval();
 // function passWarning () {
 //     //remove warning when button is clicked
 //     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
