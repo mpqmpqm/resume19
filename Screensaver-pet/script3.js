@@ -122,8 +122,8 @@ function rollingOpacityInterval () {
 }
 
 rollingOpacityInterval();
-setTimeout(rollingOpacityInterval,100);
-setTimeout(rollingOpacityInterval,100);
+rollingOpacityInterval();
+rollingOpacityInterval();
 // setTimeout(rollingOpacityInterval,100);
 // function passWarning () {
 //     //remove warning when button is clicked
