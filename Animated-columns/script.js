@@ -23,7 +23,7 @@ function focus (event) {
 
 function gridColumnBuilder (index) {
     gridResult = ``;
-    k = 16
+    k = 36;
     // for (let k = 16; k < 41; k++){
     for (let i = 0; i < 7; i++){
         
@@ -31,24 +31,27 @@ function gridColumnBuilder (index) {
             gridResult+= k +`% `
         }
 
-        else {gridResult+=`1fr `};
+        else {gridResult+=`calc(64% / 6) `};
     }
+    gridResult = gridResult.trim();
     animateGrid();
-    let gridResultArray = gridResult.split(` `);
-    // console.log(gridResultArray);
-    for (let z = 16; z<36; z+=.1){
-        gridResultArray[index] = z +`%`;
-        console.log(gridResultArray[index-1]);
-        gridResult = gridResultArray.join(` `);
-        animateGrid();
-        // window.requestAnimationFrame(animateGrid)
-    }
+    // let gridResultArray = gridResult.split(` `);
+    // console.log(gridResultArray[index]);
+    // for (let z = 16; z<36; z+=1){
+    //     gridResultArray[index] = z +`%`;
+    //     // console.log(gridResultArray[index])};
+    //     gridResult = gridResultArray.join(` `);
+    //     console.log(gridResult);
+    //     animateGrid();
+    // }
+        // window.requestAnimationFrame(animateGrid)}
+    // }
     // window.requestAnimationFrame(animateGrid);
 }
 
 function animateGrid () {
     main.style.gridTemplateColumns=gridResult;
-    // window.requestAnimationFrame(animateGrid)
+    window.requestAnimationFrame(animateGrid)
 }
 
 let gridResult = ``;
