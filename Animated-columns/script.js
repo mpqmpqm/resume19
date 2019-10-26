@@ -16,11 +16,24 @@ function focus (event) {
     let focused = event.target;
     divs.forEach((el, index) => {
         if (el === focused){
-            gridColumnBuilder(index);    
+            flexSetter(index);    
         }
     })
 }
 
+
+
+function flexSetter (index){
+    for (let i = 0; i < 7; i++){
+        if (i == index) {
+            divs[i].style.flexBasis = `65%`;
+        }
+
+        else {
+            divs[i].style.flexBasis = `calc(35% / 6)`;
+        }
+    }
+}
 function gridColumnBuilder (index) {
     gridResult = ``;
     k = 36;
