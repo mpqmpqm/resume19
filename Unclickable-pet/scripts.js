@@ -1,6 +1,6 @@
 const escaper = document.querySelector(`#escapist`);
 
-// alert(`A prize awaits behind the link! Moused devices only.`);
+alert(`A prize awaits behind the link! Moused devices only.`);
 
 escaper.addEventListener(`mouseover`, function () {
 
