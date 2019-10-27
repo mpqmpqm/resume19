@@ -12,25 +12,44 @@ function setWindow () {
 main.addEventListener(`mouseover`, focus);
 window.addEventListener(`resize`, setWindow)
 
+// function focus (event) {
+//     let focused = event.target;
+//     divs.forEach((el, index) => {
+//         if (el === focused){
+//             window.requestAnimationFrame(() => {
+//                 flexSetter(index);})    
+//         }}
+//     )
+// }
+
 function focus (event) {
+    window.requestAnimationFrame(() => {
     let focused = event.target;
     divs.forEach((el, index) => {
         if (el === focused){
-            flexSetter(index);    
-        }
+                flexSetter(index);
+            }  
+        })
     })
 }
+
+// window.requestAnimationFrame ((index) => {
+//     flexSetter(index);
+// })
 
 
 
 function flexSetter (index){
+    
     for (let i = 0; i < 7; i++){
         if (i == index) {
             divs[i].style.flexBasis = `65%`;
+            divs[i].style.flexGrow = `1`;
         }
 
         else {
             divs[i].style.flexBasis = `calc(35% / 6)`;
+            divs[i].style.flexGrow = `0`;
         }
     }
 }
