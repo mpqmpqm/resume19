@@ -78,9 +78,8 @@ div:nth-child(7){
     z-index: 999;
 } */
 
-@media only screen and (orientation: portait) {
+@media only screen and (orientation: portrait) {
     main {
-        display: none;
         flex-direction: column;
     }
 }

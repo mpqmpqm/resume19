@@ -4,9 +4,10 @@ const divs = Array.from(document.querySelectorAll(`main > div`));
 
 function setWindow () {
     body.style.width = window.innerWidth + `px`
-    divs.forEach(el => {
-        el.style.height = window.innerHeight + `px`
-    });
+    body.style.height = window.innerHeight + `px`
+    // divs.forEach(el => {
+    //     el.style.height = window.innerHeight + `px`
+    // });
 }
 
 main.addEventListener(`click`, focus);
@@ -37,21 +38,23 @@ function focus (event) {
 //     flexSetter(index);
 // })
 
-
+let maxZ = 7;
 
 function flexSetter (index){
     
+
     for (let i = 0; i < 7; i++){
         if (i == index) {
             divs[i].style.flexBasis = `75%`;
             divs[i].style.flexGrow = `1`;
-            divs[i].style.zIndex = `999`;
+            maxZ++;
+            divs[i].style.zIndex = String(maxZ)
         }
 
         else {
             divs[i].style.flexBasis = `calc(25% / 6)`;
             divs[i].style.flexGrow = `0`;
-            divs[i].style.zIndex = String(7 - i);
+            // divs[i].style.zIndex = String(7 - i);
         }
     }
 }
