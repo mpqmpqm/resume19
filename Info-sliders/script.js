@@ -42,21 +42,20 @@ let maxZ = 7;
 
 function flexSetter (index){
     
-
     for (let i = 0; i < 7; i++){
         if (i == index) {
             divs[i].style.flexBasis = `75%`;
             divs[i].style.flexGrow = `1`;
-            maxZ++;
-            divs[i].style.zIndex = String(maxZ)
+            divs[i].style.zIndex = `999`;
         }
 
         else {
             divs[i].style.flexBasis = `calc(25% / 6)`;
             divs[i].style.flexGrow = `0`;
-            // divs[i].style.zIndex = String(7 - i);
+            divs[i].style.zIndex = String (7 - Math.abs(i - index));
         }
     }
+
 }
 function gridColumnBuilder (index) {
     gridResult = ``;
