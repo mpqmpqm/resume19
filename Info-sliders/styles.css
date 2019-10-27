@@ -18,7 +18,7 @@ main {
     /* transition: all 1s; */
 }
 
-main > div {
+main>div {
     height: 100%;
     flex-basis: calc(25% / 6);
     flex-shrink: 1;
@@ -31,7 +31,7 @@ main > div {
     /* will-change: flex-basis; */
 }
 
-main > div:first-child {
+main>div:first-child {
     /* height: inherit; */
     background-color: red;
     /* min-width: 36%; */
@@ -39,32 +39,32 @@ main > div:first-child {
     z-index: 7;
 }
 
-main > div:nth-child(2){
+main>div:nth-child(2) {
     background-color: orange;
     z-index: 6;
 }
 
-main > div:nth-child(3){
+main>div:nth-child(3) {
     background-color: yellow;
     z-index: 5;
 }
 
-main > div:nth-child(4){
+main>div:nth-child(4) {
     background-color: green;
     z-index: 4;
 }
 
-div:nth-child(5){
+div:nth-child(5) {
     background-color: blue;
     z-index: 3;
 }
 
-div:nth-child(6){
+div:nth-child(6) {
     background-color: indigo;
     z-index: 2;
 }
 
-div:nth-child(7){
+div:nth-child(7) {
     background-color: violet;
     z-index: 1;
 }
@@ -92,40 +92,41 @@ div:nth-child(7){
     width: max-content;
     font-weight: bold;
     cursor: default;
-    will-change: transform;
+    will-change: transform, opacity;
     background: inherit;
     z-index: inherit;
     font-family: sans-serif;
 }
 
-@media not screen and (orientation: portrait){
-.label:first-child {
-    top: 75%;
-}
+@media not screen and (orientation: portrait) {
+    .label:first-child {
+        top: 75%;
+    }
 
-div:nth-child(2) .label{
-    top: 65%;
-}
+    div:nth-child(2) .label {
+        top: 65%;
+    }
 
-div:nth-child(3) .label{
-    top: 55%;
-}
+    div:nth-child(3) .label {
+        top: 55%;
+    }
 
-div:nth-child(4) .label{
-    top: 45%;
-}
+    div:nth-child(4) .label {
+        top: 45%;
+    }
 
-div:nth-child(5) .label{
-    top: 35%;
-}
+    div:nth-child(5) .label {
+        top: 35%;
+    }
 
-div:nth-child(6) .label{
-    top: 25%;
-}
+    div:nth-child(6) .label {
+        top: 25%;
+    }
 
-div:nth-child(7) .label{
-    top: 15%;
-}}
+    div:nth-child(7) .label {
+        top: 15%;
+    }
+}
 
 .text {
     position: absolute;
@@ -147,22 +148,41 @@ div:nth-child(7) .label{
 div:nth-child(3) * {
     color: black;
 }
-*::-webkit-scrollbar{
+
+*::-webkit-scrollbar {
     display: none;
 }
 
-main > div:first-child > .text {
+main>div:first-child>.text {
     display: block;
 }
+
+h1,
+h2,
+h3 {
+    font-family: sans-serif;
+    margin: .2em 0;
+}
+
+p {
+    margin: 1em 0;
+    line-height: 1.1;
+}
+
+p:first-of-type, h3 + p {
+    margin-top: 0;
+}
+
 
 @media only screen and (orientation: portrait) {
     main {
         flex-direction: column;
     }
 
-    div > .label.label {
-    top: 1vh;  
-  }
+    div>.label.label {
+        top: 1vh;
+    }
+
     .label {
         font-size: 2vh;
         position: absolute;
@@ -177,23 +197,23 @@ main > div:first-child > .text {
     }
 
     .text {
-    position: relative;
-    width: 100%;
-    max-height: 85%;
-    top: 0;
-    left: 0;
-    padding: 0 4vh;
-    color: white;
-    /* mix-blend-mode: difference; */
-    font-family: serif;
-    font-size: 1rem;
-    display: none;
-    z-index: inherit;
-    overflow: auto;
-    margin-top: 6vh;
+        position: relative;
+        width: 100%;
+        max-height: 85%;
+        top: 0;
+        left: 0;
+        padding: 0 4vh;
+        color: white;
+        /* mix-blend-mode: difference; */
+        font-family: serif;
+        font-size: 1rem;
+        display: none;
+        z-index: inherit;
+        overflow: auto;
+        margin-top: 6vh;
     }
 
-    main > div {
+    main>div {
         box-shadow: 0 0 4px rgb(0, 0, 0);
     }
 
