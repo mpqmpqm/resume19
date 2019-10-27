@@ -3,10 +3,19 @@ const main = document.querySelector(`main`);
 const divs = Array.from(document.querySelectorAll(`main > div`));
 const labels = Array.from(document.querySelectorAll(`.label`));
 const texts = Array.from(document.querySelectorAll(`.text`));
+const all = Array.from (document.querySelectorAll(`body *`));
 
 function setWindow() {
-    body.style.width = window.innerWidth + `px`
-    body.style.height = window.innerHeight + `px`
+    body.style.width = window.innerWidth + `px`;
+    body.style.height = window.innerHeight + `px`;
+    if (window.matchMedia(`only screen and (orientation: portrait)`).matches){
+    all.forEach((el) => {
+        el.style.transform =``;
+        el.style.right = ``;
+        el.style.left = ``;
+        el.style.top = ``;
+
+    })}
     // divs.forEach(el => {
     //     el.style.height = window.innerHeight + `px`
     // });
@@ -41,7 +50,7 @@ function focus(event) {
                 flexSetter(index);
             })
         }
-    })
+    });
 }
 
 let lastFocused = 0;
