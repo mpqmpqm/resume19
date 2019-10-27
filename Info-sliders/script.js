@@ -34,12 +34,6 @@ function focus (event) {
     })
 }
 
-// window.requestAnimationFrame ((index) => {
-//     flexSetter(index);
-// })
-
-let maxZ = 7;
-
 function flexSetter (index){
     
     for (let i = 0; i < 7; i++){
@@ -57,38 +51,38 @@ function flexSetter (index){
     }
 
 }
-function gridColumnBuilder (index) {
-    gridResult = ``;
-    k = 36;
-    // for (let k = 16; k < 41; k++){
-    for (let i = 0; i < 7; i++){
+// function gridColumnBuilder (index) {
+//     gridResult = ``;
+//     k = 36;
+//     // for (let k = 16; k < 41; k++){
+//     for (let i = 0; i < 7; i++){
         
-        if (i == index){
-            gridResult+= k +`% `
-        }
+//         if (i == index){
+//             gridResult+= k +`% `
+//         }
 
-        else {gridResult+=`calc(64% / 6) `};
-    }
-    gridResult = gridResult.trim();
-    animateGrid();
-    // let gridResultArray = gridResult.split(` `);
-    // console.log(gridResultArray[index]);
-    // for (let z = 16; z<36; z+=1){
-    //     gridResultArray[index] = z +`%`;
-    //     // console.log(gridResultArray[index])};
-    //     gridResult = gridResultArray.join(` `);
-    //     console.log(gridResult);
-    //     animateGrid();
-    // }
-        // window.requestAnimationFrame(animateGrid)}
-    // }
-    // window.requestAnimationFrame(animateGrid);
-}
+//         else {gridResult+=`calc(64% / 6) `};
+//     }
+//     gridResult = gridResult.trim();
+//     animateGrid();
+//     // let gridResultArray = gridResult.split(` `);
+//     // console.log(gridResultArray[index]);
+//     // for (let z = 16; z<36; z+=1){
+//     //     gridResultArray[index] = z +`%`;
+//     //     // console.log(gridResultArray[index])};
+//     //     gridResult = gridResultArray.join(` `);
+//     //     console.log(gridResult);
+//     //     animateGrid();
+//     // }
+//         // window.requestAnimationFrame(animateGrid)}
+//     // }
+//     // window.requestAnimationFrame(animateGrid);
+// }
 
-function animateGrid () {
-    main.style.gridTemplateColumns=gridResult;
-    window.requestAnimationFrame(animateGrid)
-}
+// function animateGrid () {
+//     main.style.gridTemplateColumns=gridResult;
+//     window.requestAnimationFrame(animateGrid)
+// }
 
-let gridResult = ``;
+// let gridResult = ``;
 setWindow();
