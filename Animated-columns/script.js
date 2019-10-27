@@ -1,6 +1,6 @@
 const body = document.querySelector(`body`);
 const main = document.querySelector(`main`);
-const divs = Array.from(document.querySelectorAll(`div`));
+const divs = Array.from(document.querySelectorAll(`main > div`));
 
 function setWindow () {
     body.style.width = window.innerWidth + `px`
@@ -9,7 +9,7 @@ function setWindow () {
     });
 }
 
-main.addEventListener(`mouseover`, focus);
+main.addEventListener(`click`, focus);
 window.addEventListener(`resize`, setWindow)
 
 // function focus (event) {
@@ -43,13 +43,15 @@ function flexSetter (index){
     
     for (let i = 0; i < 7; i++){
         if (i == index) {
-            divs[i].style.flexBasis = `65%`;
+            divs[i].style.flexBasis = `75%`;
             divs[i].style.flexGrow = `1`;
+            divs[i].style.zIndex = `999`;
         }
 
         else {
-            divs[i].style.flexBasis = `calc(35% / 6)`;
+            divs[i].style.flexBasis = `calc(25% / 6)`;
             divs[i].style.flexGrow = `0`;
+            divs[i].style.zIndex = String(7 - i);
         }
     }
 }

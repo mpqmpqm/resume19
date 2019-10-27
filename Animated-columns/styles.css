@@ -13,22 +13,23 @@ main {
     /* transition: all 1s; */
 }
 
-div {
+main > div {
     height: 100%;
-    flex-basis: calc(35% / 6);
+    flex-basis: calc(25% / 6);
     flex-shrink: 1;
     flex-grow: 2;
     /* width:inherit;*/
-    transition: flex-basis .75s;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    z-index: 2;
+    transition: flex-basis .4s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    /* z-index: 2; */
+    position: relative;
 }
 
-div:first-child {
+main > div:first-child {
     /* height: inherit; */
     background-color: red;
     /* min-width: 36%; */
-    flex-basis: 65%;
+    flex-basis: 75%;
     z-index: 7;
 }
 
@@ -61,3 +62,15 @@ div:nth-child(7){
     background-color: violet;
     z-index: 1;
 }
+
+/* main > div::after {
+    color: white;
+    position: absolute;
+    transform: rotateZ(90deg);
+    top: 25%;
+    left: 94%;
+    font-family: sans-serif;
+    font-size: 1rem;
+    content: 'LABEL';
+    z-index: 999;
+} */
