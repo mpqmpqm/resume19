@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 main {
@@ -8,7 +9,7 @@ main {
     /* grid-template-columns: repeat(7,1fr); */
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     /* flex-direction: row-reverse; */
     /* grid-template-rows: 1fr; */
     /* transition: all 1s; */
