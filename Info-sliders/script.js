@@ -29,12 +29,13 @@ function focus (event) {
     let focused = event.target;
     divs.forEach((el, index) => {
         if (el === focused){
-            flexSetter(index);
+            window.requestAnimationFrame (() => {flexSetter(index);})
+            
             }  
         })
     labels.forEach((el, index) => {
         if (el === focused){
-            flexSetter(index);
+            window.requestAnimationFrame(() => {flexSetter(index);})
         }}  
     )
 }
