@@ -40,6 +40,8 @@ function focus (event) {
     )
 }
 
+let lastFocused = 0;
+
 function flexSetter (index){
     
     for (let i = 0; i < 7; i++){
@@ -48,7 +50,14 @@ function flexSetter (index){
             divs[i].style.flexGrow = `1`;
             divs[i].style.zIndex = `999`;
             if (!window.matchMedia(`only screen and (orientation: portrait)`).matches){
-            labels[i].style.transform = `rotateZ(90deg)`;}
+                if (index > lastFocused){
+                    labels[i].style.transform = `rotateZ(-90deg)`;
+                    labels[i].style.right = ``;
+                    labels[i].style.left = `-1.6vw`;
+                }
+                else {labels[i].style.transform = `rotateZ(90deg)`;
+                labels[i].style.left = ``;
+                labels[i].style.right = `-1.6vw`;}}
             texts[i].style.display = `block`;
         }
 
@@ -66,7 +75,7 @@ function flexSetter (index){
                     labels[i].style.transform = `rotateZ(-90deg)`;}
             }
 
-            else {
+            else if (i > index){
                 if (getComputedStyle(labels[i]).transform == `matrix(6.12323e-17, -1, 1, 6.12323e-17, 0, 0)`)
                     {labels[i].style.opacity = `0`;
                     setTimeout (()=>{labels[i].style.opacity = `1`;}, 100);
@@ -74,8 +83,11 @@ function flexSetter (index){
             }
         }
     }
+    }
 
-}}
+    lastFocused = index;
+
+}
 // function gridColumnBuilder (index) {
 //     gridResult = ``;
 //     k = 36;
