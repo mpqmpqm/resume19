@@ -6,6 +6,7 @@
 
 main {
     display: flex;
+    flex-direction: row;
     /* grid-template-columns: repeat(7,1fr); */
     height: 100%;
     width: 100%;
@@ -76,3 +77,10 @@ div:nth-child(7){
     content: 'LABEL';
     z-index: 999;
 } */
+
+@media only screen and (orientation: portait) {
+    main {
+        display: none;
+        flex-direction: column;
+    }
+}
