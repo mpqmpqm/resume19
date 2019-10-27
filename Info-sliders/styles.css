@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 main {
@@ -26,6 +28,7 @@ main > div {
     box-shadow: 0 0 10px rgb(0, 0, 0);
     /* z-index: 2; */
     position: relative;
+    /* will-change: flex-basis; */
 }
 
 main > div:first-child {
@@ -36,17 +39,17 @@ main > div:first-child {
     z-index: 7;
 }
 
-div:nth-child(2){
+main > div:nth-child(2){
     background-color: orange;
     z-index: 6;
 }
 
-div:nth-child(3){
+main > div:nth-child(3){
     background-color: yellow;
     z-index: 5;
 }
 
-div:nth-child(4){
+main > div:nth-child(4){
     background-color: green;
     z-index: 4;
 }
@@ -78,8 +81,116 @@ div:nth-child(7){
     z-index: 999;
 } */
 
+.label {
+    font-size: 1.8vw;
+    position: absolute;
+    right: -1.6vw;
+    transform: rotateZ(90deg);
+    color: white;
+    /* mix-blend-mode: difference; */
+    transition: opacity .1s;
+    width: max-content;
+    font-weight: bold;
+    cursor: default;
+    will-change: transform;
+    background: inherit;
+    z-index: inherit;
+}
+
+@media not screen and (orientation: portrait){
+.label:first-child {
+    top: 75%;
+}
+
+div:nth-child(2) .label{
+    top: 65%;
+}
+
+div:nth-child(3) .label{
+    top: 55%;
+}
+
+div:nth-child(4) .label{
+    top: 45%;
+}
+
+div:nth-child(5) .label{
+    top: 35%;
+}
+
+div:nth-child(6) .label{
+    top: 25%;
+}
+
+div:nth-child(7) .label{
+    top: 15%;
+}}
+
+.text {
+    position: absolute;
+    width: 55vw;
+    max-height: 75%;
+    top: 10%;
+    left: 10%;
+    color: white;
+    /* mix-blend-mode: difference; */
+    font-family: serif;
+    font-size: 2vw;
+    display: none;
+    /* z-index: inherit; */
+    overflow: auto;
+    /* will-change: display; */
+    /* transition: all .4s; */
+}
+
+*::-webkit-scrollbar{
+    display: none;
+}
+
+main > div:first-child > .text {
+    display: block;
+}
+
 @media only screen and (orientation: portrait) {
     main {
         flex-direction: column;
     }
+
+    div > .label.label {
+    top: 1vh;  
+  }
+    .label {
+        font-size: 2vh;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: white;
+        /* mix-blend-mode: difference; */
+        transition: opacity .1s;
+        font-weight: bold;
+        transform: rotateZ(0deg);
+        right: 0;
+    }
+
+    .text {
+    position: relative;
+    width: 100%;
+    max-height: 85%;
+    top: 0;
+    left: 0;
+    padding: 0 4vh;
+    color: white;
+    mix-blend-mode: difference;
+    font-family: serif;
+    font-size: 1rem;
+    display: none;
+    z-index: inherit;
+    overflow: auto;
+    margin-top: 6vh;
+    }
+
+    main > div {
+        box-shadow: 0 0 4px rgb(0, 0, 0);
+    }
+
 }
