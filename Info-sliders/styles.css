@@ -3,7 +3,7 @@
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
 
 main {
@@ -95,6 +95,7 @@ div:nth-child(7){
     will-change: transform;
     background: inherit;
     z-index: inherit;
+    font-family: sans-serif;
 }
 
 @media not screen and (orientation: portrait){
@@ -135,7 +136,7 @@ div:nth-child(7) .label{
     color: white;
     /* mix-blend-mode: difference; */
     font-family: serif;
-    font-size: 2vw;
+    font-size: 1.6vw;
     display: none;
     /* z-index: inherit; */
     overflow: auto;
@@ -143,6 +144,9 @@ div:nth-child(7) .label{
     /* transition: all .4s; */
 }
 
+div:nth-child(3) * {
+    color: black;
+}
 *::-webkit-scrollbar{
     display: none;
 }
@@ -180,7 +184,7 @@ main > div:first-child > .text {
     left: 0;
     padding: 0 4vh;
     color: white;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
     font-family: serif;
     font-size: 1rem;
     display: none;
