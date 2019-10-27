@@ -6,8 +6,10 @@ const texts = Array.from(document.querySelectorAll(`.text`));
 const all = Array.from (document.querySelectorAll(`body *`));
 
 function setWindow() {
-    body.style.width = window.innerWidth + `px`;
-    body.style.height = window.innerHeight + `px`;
+    body.style.width = ``;
+    body.style.height= ``;
+    body.style.width = String(window.innerWidth) + `px`;
+    body.style.height = String(window.innerHeight) + `px`;
     if (window.matchMedia(`only screen and (orientation: portrait)`).matches){
     all.forEach((el) => {
         el.style.transform =``;
@@ -22,7 +24,8 @@ function setWindow() {
 }
 
 main.addEventListener(`click`, focus);
-window.addEventListener(`resize`, setWindow)
+window.addEventListener(`resize`, setWindow);
+window.addEventListener(`orientationchange`, setWindow);
 
 // function focus (event) {
 //     let focused = event.target;
