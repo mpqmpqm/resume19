@@ -70,7 +70,7 @@ function flexSetter(index) {
                     labels[i].style.transform = `rotateZ(-90deg)`;
                     labels[i].style.right = ``;
                     labels[i].style.left = `-1.6vw`;
-                } else {
+                } else if (index != lastFocused){
                     labels[i].style.transform = `rotateZ(90deg)`;
                     labels[i].style.left = ``;
                     labels[i].style.right = `-1.6vw`;
@@ -89,7 +89,7 @@ function flexSetter(index) {
                         labels[i].style.opacity = `0`;
                         setTimeout(() => {
                             labels[i].style.opacity = `1`;
-                        }, 100);
+                        }, 80);
                         labels[i].style.transform = `rotateZ(-90deg)`;
                     }
                 } else if (i > index) {
@@ -97,7 +97,7 @@ function flexSetter(index) {
                         labels[i].style.opacity = `0`;
                         setTimeout(() => {
                             labels[i].style.opacity = `1`;
-                        }, 100);
+                        }, 80);
                         labels[i].style.transform = `rotateZ(90deg)`;
                     }
                 }
