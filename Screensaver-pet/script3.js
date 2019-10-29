@@ -119,7 +119,7 @@ function opacityNext () {
     }
 }
 
-// opacityStart();
+opacityStart();
 
 function opacityStep (place) {
     // for (place; place <=20 )
@@ -128,11 +128,20 @@ function opacityStep (place) {
     lines[place + 20].style.opacity = `1`;});
 }
 
-function rollingOpacityNext(e){
+function rollingOpacityNext(e, last){
+    if (last) {
     for (e; e<lines.length; e +=40){
         lines[e].style.opacity = `0`;
         lines[e+20].style.opacity = `1`; 
-    }
+    }}
+
+    else {
+        for (e; e< lines.length; e+=40){
+            lines[e].style.opacity = `1`;
+            lines[e+20].style.opacity = `0`;  
+        }}
+
+    // ok = !ok;
 }
 
 function fullOpacityCycle () {
@@ -145,7 +154,7 @@ function fullOpacityCycle () {
 
     // opacityReset();
 
-    fullOpacityCycle();
+    // fullOpacityCycle();
 }
 
 function opacityCycle(start){
@@ -155,12 +164,16 @@ function opacityCycle(start){
 }
 
 let same = 0;
+let ok = true;
 function rollingOpacityInterval () {
-    rollingOpacityNext(same);
+    rollingOpacityNext(same, ok);
     same++;
-    if (same == 379) {
+    if (same == 20) {
+        // opacityReset();
         same = 0;
+        ok = !ok;
     }
+    
     window.requestAnimationFrame(rollingOpacityInterval);
 }
 
@@ -174,9 +187,11 @@ function cycle () {
 
 
 
+rollingOpacityInterval();
+rollingOpacityInterval();
+rollingOpacityInterval();
 // rollingOpacityInterval();
-// rollingOpacityInterval();
-// rollingOpacityInterval();
+
 // setTimeout(rollingOpacityInterval,100);
 // function passWarning () {
 //     //remove warning when button is clicked

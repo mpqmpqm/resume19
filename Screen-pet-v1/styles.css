@@ -1,0 +1,28 @@
+#warning {
+    text-align: center;
+    background: white;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    padding-top: 14%;
+    font-size: 1.6rem;
+}
+
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+
+svg {
+    background:blue;
+    transition: background-color .4s;
+}
+
+line {
+    stroke-width: 2px;
+    stroke:white;
+    opacity: 0;
+    /* will-change: opacity; */
+}
