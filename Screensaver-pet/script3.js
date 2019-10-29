@@ -96,18 +96,61 @@ function opacityStart() {
     }
 }
 
+function opacityReset () {
+    for (let e = 0; e < lines.length; e += 40) {
+        for (let i = e; i < e + 20; i++) {
+            lines[i].style.opacity = `1`;
+        }
+    }
+    for (let e = 20; e < lines.length; e +=40) {
+        for (let i = e; i < e + 20; i++) {
+            lines[i].style.opacity = `0`;
+        }   
+    }
+
+    // fullOpacityCycle();
+    // window.requestAnimationFrame(fullOpacityCycle);
+}
+
 function opacityNext () {
     for (let e = 0; e < lines.length; e+=40){
         lines[e].style.opacity = `0`;
         lines[e+20].style.opacity = `1`;
     }
 }
-opacityStart();
+
+// opacityStart();
+
+function opacityStep (place) {
+    // for (place; place <=20 )
+    window.requestAnimationFrame(() => {
+    lines[place].style.opacity = `0`;
+    lines[place + 20].style.opacity = `1`;});
+}
 
 function rollingOpacityNext(e){
     for (e; e<lines.length; e +=40){
         lines[e].style.opacity = `0`;
-        lines[Math.min(e+20, 399)].style.opacity = `1`; 
+        lines[e+20].style.opacity = `1`; 
+    }
+}
+
+function fullOpacityCycle () {
+    
+
+    for (let i = 0; i <= 360; i+=40){
+        window.requestAnimationFrame(() => {
+        opacityCycle (i);});
+    }
+
+    // opacityReset();
+
+    fullOpacityCycle();
+}
+
+function opacityCycle(start){
+    for (let i = start; i < start+20; i++){
+        opacityStep(i);
     }
 }
 
@@ -115,15 +158,25 @@ let same = 0;
 function rollingOpacityInterval () {
     rollingOpacityNext(same);
     same++;
-    if (same == 40) {
+    if (same == 379) {
         same = 0;
     }
     window.requestAnimationFrame(rollingOpacityInterval);
 }
 
-rollingOpacityInterval();
-rollingOpacityInterval();
-rollingOpacityInterval();
+function cycle () {
+    setTimeout (opacityReset, 80);
+    setTimeout (fullOpacityCycle, 160);
+    // window.requestAnimationFrame(cycle);
+}
+
+// setInterval (cycle, 240);
+
+
+
+// rollingOpacityInterval();
+// rollingOpacityInterval();
+// rollingOpacityInterval();
 // setTimeout(rollingOpacityInterval,100);
 // function passWarning () {
 //     //remove warning when button is clicked
