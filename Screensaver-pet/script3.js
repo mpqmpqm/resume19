@@ -1,16 +1,16 @@
 const field = document.querySelector(`svg`);
-// const warningButton = document.querySelector(`button`);
+const warningButton = document.querySelector(`button`);
 
 function setField() {
     field.style.height = window.innerHeight;
     field.style.width = window.innerWidth;
-    // warning.style.height = window.innerHeight;
-    // warning.style.width = window.innerWidth;
+    warning.style.height = window.innerHeight;
+    warning.style.width = window.innerWidth;
 }
 
 setField();
 window.addEventListener(`resize`, setField);
-// warningButton.addEventListener(`click`, passWarning);
+warningButton.addEventListener(`click`, passWarning);
 
 //svg lines are drawn from (x1, y1) to (x2, y2)
 function drawLine(x1, y1, x2, y2) {
@@ -197,22 +197,22 @@ setInterval(function(){
     backgroundSwitch = !backgroundSwitch;
 },400);
 
-rollingOpacityInterval();
-rollingOpacityInterval();
-rollingOpacityInterval();
+;
 // rollingOpacityInterval();
 
 // setTimeout(rollingOpacityInterval,100);
-// function passWarning () {
-//     //remove warning when button is clicked
-//     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
+function passWarning () {
+    //remove warning when button is clicked
+    document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
 
-//     //remove warning css
-//     document.styleSheets[0].deleteRule(0);
+    //remove warning css
+    document.styleSheets[0].deleteRule(0);
 
-//     //start the animation
-//     setInterval (cascade, 100, lines);
-// }
+    //start the animation
+    rollingOpacityInterval();
+    rollingOpacityInterval();
+    rollingOpacityInterval()
+}
 
 // // switch background color
 // let backgroundSwitch;
