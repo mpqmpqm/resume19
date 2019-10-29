@@ -61,28 +61,28 @@ function drawLines(lineCount) {
 }
 
 //switch the opacity of a line to the opposite of what it was
-function strokeSwitch(line, zeroSwitch) {
+// function strokeSwitch(line, zeroSwitch) {
 
-    if (zeroSwitch) {
-        lines[line].style.opacity = `1`;
-    } else {
-        lines[line].style.opacity = `0`;
-    }
+//     if (zeroSwitch) {
+//         lines[line].style.opacity = `1`;
+//     } else {
+//         lines[line].style.opacity = `0`;
+//     }
 
-}
+// }
 
 //track last operation on opacity, without accessing properties of individual lines.
-let zeroSwitch = true;
+// let zeroSwitch = true;
 //lines switch opacity one after the other
-function cascade(lines) {
+// function cascade(lines) {
 
-    //schedule lines.length calls of strokeSwitch. Each call will execute 5ms after the previous. Starting with a 2s delay and working down makes the effect go clockwise, which I prefer.
-    for (i = 0; i < lines.length; i++) {
-        setTimeout(strokeSwitch, 2000 - i * 5, i, zeroSwitch);
-    }
-    //schedule the opposite effect for the next call of this function
-    zeroSwitch = !zeroSwitch;
-}
+//     //schedule lines.length calls of strokeSwitch. Each call will execute 5ms after the previous. Starting with a 2s delay and working down makes the effect go clockwise, which I prefer.
+//     for (i = 0; i < lines.length; i++) {
+//         setTimeout(strokeSwitch, 2000 - i * 5, i, zeroSwitch);
+//     }
+//     //schedule the opposite effect for the next call of this function
+//     zeroSwitch = !zeroSwitch;
+// }
 
 drawLines(400);
 const lines = Array.from(field.querySelectorAll(`line`));
@@ -112,21 +112,21 @@ function opacityReset () {
     // window.requestAnimationFrame(fullOpacityCycle);
 }
 
-function opacityNext () {
-    for (let e = 0; e < lines.length; e+=40){
-        lines[e].style.opacity = `0`;
-        lines[e+20].style.opacity = `1`;
-    }
-}
+// function opacityNext () {
+//     for (let e = 0; e < lines.length; e+=40){
+//         lines[e].style.opacity = `0`;
+//         lines[e+20].style.opacity = `1`;
+//     }
+// }
 
 opacityStart();
 
-function opacityStep (place) {
-    // for (place; place <=20 )
-    window.requestAnimationFrame(() => {
-    lines[place].style.opacity = `0`;
-    lines[place + 20].style.opacity = `1`;});
-}
+// function opacityStep (place) {
+//     // for (place; place <=20 )
+//     window.requestAnimationFrame(() => {
+//     lines[place].style.opacity = `0`;
+//     lines[place + 20].style.opacity = `1`;});
+// }
 
 function rollingOpacityNext(e, last){
     if (last) {
@@ -144,24 +144,24 @@ function rollingOpacityNext(e, last){
     // ok = !ok;
 }
 
-function fullOpacityCycle () {
+// function fullOpacityCycle () {
     
 
-    for (let i = 0; i <= 360; i+=40){
-        window.requestAnimationFrame(() => {
-        opacityCycle (i);});
-    }
+//     for (let i = 0; i <= 360; i+=40){
+//         window.requestAnimationFrame(() => {
+//         opacityCycle (i);});
+//     }
 
-    // opacityReset();
+//     // opacityReset();
 
-    // fullOpacityCycle();
-}
+//     // fullOpacityCycle();
+// }
 
-function opacityCycle(start){
-    for (let i = start; i < start+20; i++){
-        opacityStep(i);
-    }
-}
+// function opacityCycle(start){
+//     for (let i = start; i < start+20; i++){
+//         opacityStep(i);
+//     }
+// }
 
 let same = 0;
 let ok = true;
@@ -177,13 +177,13 @@ function rollingOpacityInterval () {
     window.requestAnimationFrame(rollingOpacityInterval);
 }
 
-function cycle () {
-    setTimeout (opacityReset, 80);
-    setTimeout (fullOpacityCycle, 160);
-    // window.requestAnimationFrame(cycle);
-}
+// function cycle () {
+//     setTimeout (opacityReset, 80);
+//     setTimeout (fullOpacityCycle, 160);
+//     // window.requestAnimationFrame(cycle);
+// }
 
-// setInterval (cycle, 240);
+// // setInterval (cycle, 240);
 
 let backgroundSwitch;
 
@@ -197,10 +197,6 @@ setInterval(function(){
     backgroundSwitch = !backgroundSwitch;
 },400);
 
-;
-// rollingOpacityInterval();
-
-// setTimeout(rollingOpacityInterval,100);
 function passWarning () {
     //remove warning when button is clicked
     document.getElementById(`warning`).parentNode.removeChild(document.getElementById(`warning`));
@@ -211,17 +207,5 @@ function passWarning () {
     //start the animation
     rollingOpacityInterval();
     rollingOpacityInterval();
-    rollingOpacityInterval()
+    rollingOpacityInterval();
 }
-
-// // switch background color
-// let backgroundSwitch;
-// setInterval(function(){
-//     if (backgroundSwitch){
-//         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`;}
-
-//     else{
-//         document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`;
-//     }
-//     backgroundSwitch = !backgroundSwitch;
-// },400);
