@@ -18,6 +18,7 @@ body{
 svg {
     background:blue;
     transition: background-color .4s;
+    will-change: background-color;
 }
 
 line {

@@ -185,7 +185,17 @@ function cycle () {
 
 // setInterval (cycle, 240);
 
+let backgroundSwitch;
 
+setInterval(function(){
+    if (backgroundSwitch){
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 255)`;}
+    
+    else{
+        document.getElementById(`canvas`).style.backgroundColor = `rgb(0, 0, 0)`;
+    }
+    backgroundSwitch = !backgroundSwitch;
+},400);
 
 rollingOpacityInterval();
 rollingOpacityInterval();

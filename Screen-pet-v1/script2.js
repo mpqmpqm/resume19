@@ -1,16 +1,16 @@
 const field = document.querySelector(`svg`);
-const warningButton = document.querySelector(`button`);
+// const warningButton = document.querySelector(`button`);
 
 function setField (){
     field.style.height = window.innerHeight;
     field.style.width = window.innerWidth;
-    warning.style.height = window.innerHeight;
-    warning.style.width = window.innerWidth;
+    // warning.style.height = window.innerHeight;
+    // warning.style.width = window.innerWidth;
 }
 
 setField();
 window.addEventListener(`resize`, setField);
-warningButton.addEventListener(`click`, passWarning);
+// warningButton.addEventListener(`click`, passWarning);
 
 //svg lines are drawn from (x1, y1) to (x2, y2)
 function drawLine (x1, y1, x2, y2) {
@@ -99,6 +99,8 @@ function passWarning () {
     //start the animation
     setInterval (cascade, 100, lines);
 }
+
+setInterval (cascade, 100, lines);
 
 // switch background color
 let backgroundSwitch;
