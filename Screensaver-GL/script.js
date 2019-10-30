@@ -24,9 +24,10 @@ let fragmentShaderText = [
 function setCanvas() {
     canvas.style.height = window.innerHeight + `px`;
     canvas.style.width = window.innerWidth + `px`;
-    canvas.setAttribute(`width`, window.innerWidth + `px`);
-    canvas.setAttribute(`height`, window.innerHeight + `px`);
-    gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+    canvas.height = window.innerHeight*window.devicePixelRatio;
+    canvas.width = window.innerWidth*window.devicePixelRatio; 
+    
+    gl.viewport(0, 0, window.innerWidth*window.devicePixelRatio, window.innerHeight*window.devicePixelRatio);
 
 }
 
@@ -67,9 +68,9 @@ if (!gl.getProgramParameter(program, gl.VALIDATE_STATUS)){
 
 let triangleVerts = [
     //X, Y          //R, G, B
-    0.0, 1.0,       1.0, 0.0, 0.0,
-    -1.0, -1.0,     0.0, 1.0, 0.0,
-    1.0, -1.0,      0.0, 0.0, 1.0
+    0.0, 1.0,       0.0, 0.0, 0.0,
+    -1.0, -1.0,     0.0, 0.0, 1.0,
+    1.0, -1.0,      1.0, 1.0, 1.0
 ];
 
 let triangleVertsBuffer = gl.createBuffer();
