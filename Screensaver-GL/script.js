@@ -68,9 +68,9 @@ if (!gl.getProgramParameter(program, gl.VALIDATE_STATUS)){
 
 let triangleVerts = [
     //X, Y          //R, G, B
-    0.0, 1.0,       0.0, 0.0, 0.0,
-    -1.0, -1.0,     0.0, 0.0, 1.0,
-    1.0, -1.0,      1.0, 1.0, 1.0
+    0.0, 1.0,       0.0, 0.0, 1.0,
+    -1.0, -1.0,     0.0, 0.0, 0.0,
+    1.0, -1.0,      1.0, 0.0, 0.0
 ];
 
 let triangleVertsBuffer = gl.createBuffer();
