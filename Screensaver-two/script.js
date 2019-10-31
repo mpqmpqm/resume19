@@ -42,7 +42,7 @@ function drawLines () {
 
 let lines = two.makeGroup (drawLines());
 
-lines.linewidth = 1;
+lines.linewidth = .8;
 lines.stroke = `white`;
 let switcher;
 
@@ -56,19 +56,32 @@ let switcher;
 
 let line = 0;
 
+
 // lines.children[0].bind (`update`, function (frameCount) {
 //     this.rotation = frameCount/16;
 // })
+
 two.bind (`update`, function (frameCount) {
 
-    lines.children[line].rotation = frameCount/600;
+    if (switcher){
+        lines.children[line].opacity = 1;
+    }
+
+    else {
+        lines.children[line].opacity = 0;
+    }
+
     line++;
+    
 
     if (line == 400) {
         line = 0;
+        switcher = !switcher;
     }
     
 }).play();
+
+
 
 
 // lines.children[0].update();
