@@ -159,7 +159,7 @@ function animate () {
         i+=k;
         // k+=0;
         if (k>=200){
-            k=0;
+            k=0
             k++;
         }
         opacitySwitch = !opacitySwitch;
