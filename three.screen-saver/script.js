@@ -134,10 +134,12 @@ lines.forEach(line => {
 let opacitySwitch = true;
 let i = 0;
 let k = 1;
+let ySwitch = true;
 
 function animate () {
     requestAnimationFrame(animate);
     
+    meshTest.rotation.z -=.08
     if (opacitySwitch){
         lines[i].material.opacity = 0;
         
@@ -149,8 +151,23 @@ function animate () {
         // lines[i].material.color =  {r: 1, g: 1, b: 1};
     }
     
-    // lineTwozie.rotation.z += 0.2;
-    // debugger;
+    // // lineTwozie.rotation.z += 0.2;
+    // // debugger;
+
+    // if (ySwitch){
+    // setTimeout(() => {
+    //     scene.rotation.y += .015
+    //     }, 100)}
+    
+    // else {
+    //     scene.rotation.y -= .015;
+    //     setTimeout(() => {
+    //         scene.rotation.y += .015
+    //         }, 100)}
+    
+    // ySwitch = !ySwitch;
+    scene.rotation.y -= .015
+    scene.rotation.z += .04;
     renderer.render (scene, camera);
 
     i+=10;
@@ -169,8 +186,21 @@ function animate () {
 
 
 
-// renderer.render (scene, camera);
+renderer.render (scene, camera);
 
+let meshGeometry = new THREE.Geometry();
+meshGeometry.vertices.push (new THREE.Vector3(-100, -100, 0));
+meshGeometry.vertices.push (new THREE.Vector3(100, 100, 0));
+
+let meshLine = new MeshLine ();
+meshLine.setGeometry(meshGeometry);
+
+let meshMaterial = new MeshLineMaterial ({lineWidth: .6, color: new THREE.Color(0xff0000), sizeAttenuation: 1, resolution: new THREE.Vector2 (window.innerWidth*devicePixelRatio, window.innerHeight*devicePixelRatio), near: 1, far: 500});
+
+let meshTest = new THREE.Mesh (meshLine.geometry, meshMaterial);
+scene.add(meshTest);
+
+renderer.render (scene, camera);
 
 animate();
 // animateK();
