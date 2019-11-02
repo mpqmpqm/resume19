@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height:100%;
+    width: 100%;
+    overflow: hidden;
+    background: yellow;
+    padding: 4vw;
+}
+
+#box {
+    position: relative;
+    height: min-content;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 20vw;
+    line-height: .9;
+    outline: 1vw solid black;
+    outline-offset: 1vw;
+    letter-spacing: -1.175vw;
+    font-weight: 100;
+}
+
+#mark {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 80vw;
+    font-weight: 100;
+    right: 6vw;
+    bottom: 20vw;
+    line-height: 0;
+    transform: rotateZ(8deg);
+}
+
