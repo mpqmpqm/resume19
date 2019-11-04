@@ -2,16 +2,18 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 #grid-container{
-    height: 400px;
-    width: 700px;
-    border: 1px solid black;
-    margin: 2% auto;
+    height: 98vh;
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 1vh auto;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 5% 1fr 5%;
+    grid-template-columns: .08fr 1fr .08fr;
     grid-template-rows: 1fr;
     position: relative;   
 }
@@ -22,22 +24,31 @@
     flex-direction: row;
     overflow: auto;
     width: 100%;
-    height: 94%;
-    position: absolute;
-    top: 6%;
+    height: 102%;
+    scroll-snap-type: x mandatory;
+    /* position: absolute; */
+    /* top: 6%; */
     /* transition: scroll 1s */
     /* justify-content: space-between; */
 }
 
-.flex-container:after{
-content: '';
-    flex: 0 0 calc(6% - 1px);}
+.item-container {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    /* border: 1px solid black; */
+}
+
+/* .flex-container:after{
+    content: '';
+    flex: 0 0 calc(6% - 1px);} */
 
 .item{
     /* position: absolute; */
-    height: 90%;
-    width: 88%;
-    margin: 0 6%;
+    height: 100%;
+    width: 100%;
     /* border: 1px solid red; */
     flex-shrink: 0;
     flex-grow: 0;
@@ -49,26 +60,35 @@ content: '';
 }
 
 
-/* button {
-    position: absolute;
-    top:25%;
-} */
+button {
+    color: white;
+    background: black;
+    border: 0;
+    font-weight: bold;
+    z-index: 99;
+    font-size: 3rem;
+}
+
+button:focus {
+    outline: 0;
+}
 
 .item:nth-child(1){
     background: blue;
 }
 
-.item:nth-child(2){
+
+.item-container:nth-child(2) .item{
     background: red;
 }
-.item:nth-child(3){
+.item-container:nth-child(3) .item{
     background: yellow;
 }
-.item:nth-child(4){
+.item-container:nth-child(4) .item{
     background: yellowgreen;
 }
 
-.item:nth-child(5){
+.item-container:nth-child(5) .item{
     background: violet;
 }
 
@@ -79,4 +99,17 @@ button:last-child{
 
 ::-webkit-scrollbar{
     width: 0;
+}
+
+#diagnostic, #diagnosticTwo {
+    position: absolute;
+    /* height: 100px; */
+    width: 200px;
+    top: 25%;
+    left: 30%;
+    font-size: 2rem;
+}
+
+#diagnosticTwo {
+    left: 60%;
 }
