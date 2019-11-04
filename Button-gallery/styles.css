@@ -160,7 +160,7 @@ button:last-child{
         width: 100%;
         letter-spacing: -2.8vh;
         color: white;
-        mix-blend-mode: difference;
+        /* mix-blend-mode: difference; */
         /* transform: rotateZ(-90deg); */
         bottom: 0;
         /* right: 0; */
