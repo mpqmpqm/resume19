@@ -151,7 +151,7 @@ function scrollToEl(position) {
         flex.scroll({
             left: position,
             top: 0,
-            behavior: `smooth`
+            // behavior: `smooth`
         });
     })
 
