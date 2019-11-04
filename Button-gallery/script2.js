@@ -147,11 +147,15 @@ function clickedNext() {
 function scrollToEl(position) {
     // console.log(el);
 
-    flex.scroll({
-        left: position,
-        top: 0,
-        behavior: `smooth`
-    });
+    requestAnimationFrame(() => {
+        flex.scroll({
+            left: position,
+            top: 0,
+            behavior: `smooth`
+        });
+    })
+
+    
 
     // diagnostic.innerHTML += `Position: ${Math.floor(flex.scrollLeft)}\n`;
 
