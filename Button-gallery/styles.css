@@ -72,7 +72,7 @@
 }
 
 .text {
-    position: absolute;
+    /* position: absolute; */
     font-family: Helvetica, Arial, san-serif;
     font-size: 28vw;
     line-height: .5;
@@ -80,6 +80,7 @@
     color: white;
     /* mix-blend-mode: difference; */
     width: 100%;
+    overflow: hidden;
 }
 
 button {
