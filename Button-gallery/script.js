@@ -2,17 +2,24 @@ const flex = document.querySelector(`.flex-container`);
 
 const items = Array.from(document.querySelectorAll(`.item-container`));
 
-const diagnostic = document.querySelector(`#diagnostic`);
+// const diagnostic = document.querySelector(`#diagnostic`);
 
-const diagnosticTwo = document.querySelector(`#diagnosticTwo`);
+// const diagnosticTwo = document.querySelector(`#diagnosticTwo`);
 
 let elWidth;
+
+ 
 
 function setElWidth (width) {
     elWidth = Number(width.slice(0,-2));
 }
 
-function itemWidthFloor (){    
+function itemWidthFloor (){
+    document.body.style.height = ``;
+    document.body.style.width =``;
+
+    document.body.style.height = window.innerHeight + `px`;
+    document.body.style.width = window.innerWidth +`px`;    
     items.forEach (el => {
     el.style.width = ``;
     let width = Math.floor(Number(getComputedStyle(el).width.slice(0, -2))) + `px`;
