@@ -144,6 +144,7 @@ button:last-child{
 
     .flex-container {
         grid-area: 1 / 1 / 2 / 3;
+        height: 100%;
         /* overflow: scroll; */
     }
 
