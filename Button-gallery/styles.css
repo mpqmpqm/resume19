@@ -13,7 +13,7 @@
     /* margin: 20vh auto; */
     overflow: hidden;
     display: grid;
-    grid-template-columns: .08fr 1fr .08fr;
+    grid-template-columns: .04fr 1fr .04fr;
     grid-template-rows: 1fr;
     position: relative;   
 }
@@ -27,6 +27,7 @@
     width: 100%;
     height: 101%;
     scroll-snap-type: x mandatory;
+    will-change: scroll-position;
     /* position: absolute; */
     /* top: 6%; */
     /* transition: scroll 1s */
