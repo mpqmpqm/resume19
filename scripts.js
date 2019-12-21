@@ -1,4 +1,4 @@
-const colorButton = document.getElementById(`colorButton`)
+// const colorButton = document.getElementById(`colorButton`)
 
 const nameDeco = document.getElementById(`name-deco`)
 // nameDeco.style.color = `blue`;
