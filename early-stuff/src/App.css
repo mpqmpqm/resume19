@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+.app {
+	width: 50%;
+	margin: 4vh auto;
+}
+
+.app > * {
+	margin: 4vh auto;
+}
+
+.app h2 {
+	margin: 1rem auto;
+	text-decoration: underline;
+	font-size: 1.8rem;
+}
+
+.app h3 {
+	font-size: 1.4rem;
+	margin: 1rem auto;
+}
+
+.app form {
+	text-align: center;
+}
+
+input[type='text'] {
+	width: 100%;
+	/* height: 1.8rem; */
+	font-size: 1.8rem;
+}
+
+input[type='submit'] {
+	margin: 1rem auto;
+	font-size: 1.3rem;
+}
+
+.info {
+	text-align: right;
+}
