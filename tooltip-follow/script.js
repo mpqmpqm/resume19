@@ -15,7 +15,7 @@ const moveHandler = (event) => {
 }
 
 const hoverHandler = () => {
-    setTimeout(showTip, 100);
+    showTip();
     subRegion.addEventListener(`mousemove`, moveHandler);
 }
 

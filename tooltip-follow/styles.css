@@ -13,8 +13,8 @@
 }
 
 .sub-region {
-    height: 30px;
-    width: 30px;
+    height: 60px;
+    width: 60px;
     background-color: blue;
     position: absolute;
     top: 40%;
