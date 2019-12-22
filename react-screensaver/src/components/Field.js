@@ -32,7 +32,7 @@ function Field () {
         return lineCoords
     }
 
-    const lines = makeCoords(1).map((set, index) => {
+    const lines = makeCoords(10).map((set, index) => {
         return (
             <Line 
                 x1 = {set.x1}

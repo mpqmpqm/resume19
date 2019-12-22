@@ -9,6 +9,14 @@ body {
 }
 
 line {
-  stroke-width: 2px;
+  opacity: 0;
+  stroke-width: 2vw;
   stroke: red;
+  transition: opacity .4s;
+
+}
+
+line:hover {
+  opacity: 1;
+  transition: opacity  0s;  
 }

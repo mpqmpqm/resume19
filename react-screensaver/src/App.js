@@ -4,7 +4,7 @@ import Field from './components/Field'
 
 function App() {
   return (
-      <Field />
+      <Field className = 'field'/>
   );
 }
 
