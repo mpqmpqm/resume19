@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Albums from "./components/Albums"
 import Thumb from "./components/Thumb"
+import Act from "./components/Act"
 
 //Discogs key: tYumlFYEMwUXeeIURptE
 //Discogs secret: wDhnGZAYPXjdhQDHWdduAXHQAbAjnCAE
@@ -16,15 +17,22 @@ class App extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.state = {
+			act: {
+				loading: false,
+				init: true,
+				link: '',
+				name: '',
+				foundAct: false
+			},
 			loading: false,
 			data: {},
 			value: '',
-			foundAct: false,
-			artist: '',
 			titles: [],
 			years: [],
-			header: 'Enter a musical act',
-			thumb: ''
+			thumb: {
+				src: '',
+				loading: false
+			}
 		}
 	}
 
@@ -37,7 +45,7 @@ class App extends React.Component {
 	handleSubmit (event) {
 		event.preventDefault();
 
-		this.setState ({header: 'Loading...', loading: true})
+		this.setState ({act: {loading: true, init: false}, loading: true, thumb: {loading: true}})
 
 		fetch (`https://api.discogs.com/database/search?type=artist&q=${this.state.value}&key=${discogsKey}&secret=${discogsSecret}`)
 			.then (response => response.json())
@@ -47,8 +55,17 @@ class App extends React.Component {
 							{
 								if (this.state.data.results.length > 0) {
 
-								// console.log(this.state.data.results[0].id);
-								this.setState({header: this.state.data.results[0].title, foundAct: true, thumb: this.state.data.results[0].thumb, artist: this.state.data.results[0].title})
+								this.setState(
+									{ 
+										act: 
+											{foundAct: true,
+											name: this.state.data.results[0].title,
+											link: `https://www.discogs.com/${this.state.data.results[0].uri}`,
+											loading: false},
+										thumb: 
+											{src: this.state.data.results[0].thumb, 
+											loading: false},
+									})
 
 									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc`)
 										.then (response => response.json())
@@ -73,12 +90,9 @@ class App extends React.Component {
 													// artist: data.releases[0].artist,
 													titles: titles,
 													years: years,
-													foundData: true,
 													loading: false
 													// header: data.releases[0].artist
 												})
-
-												console.log(this.state.years[0]);
 
 											})
 
@@ -87,7 +101,7 @@ class App extends React.Component {
 					
 				
 								else {
-									this.setState ({foundData: false, header: 'Not found, please try again.', loading: false, foundAct: false});
+									this.setState ({act: {name: 'Not found, please try again.'}, loading: false, foundAct: false});
 								}})
 
 		
@@ -109,22 +123,23 @@ class App extends React.Component {
 					<input type="submit" value='Submit'/>
 				</form>
 				<div className = 'info'>
-					{/* <img 
-						src = {this.state.foundData ? this.state.data.results[0].thumb : null} 
-						alt = 'img' 
-						style = {{display: this.state.foundData ? 'block' : 'none'}}
-					/> */}
-
+					
 					<Thumb 
-						src = {this.state.thumb} 
-						alt = {this.state.artist}
-						foundAct = {this.state.foundAct}
-						loading = {this.state.loading}/>
+						src = {this.state.thumb.src} 
+						alt = {this.state.act.name}
+						foundAct = {this.state.act.foundAct}
+						loading = {this.state.thumb.loading}/>
 
 					<div className = 'text'> 	
-						<h2>{this.state.header}</h2>
+						<Act 
+							name = {this.state.act.name}
+							link = {this.state.act.link}
+							init = {this.state.act.init}
+							loading = {this.state.act.loading}
+							foundAct = {this.state.act.foundAct}
+							/>
 						
-						<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} foundAct = {this.state.foundAct}/>
+						<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} foundAct = {this.state.act.foundAct}/>
 					</div>
 
 				</div>
