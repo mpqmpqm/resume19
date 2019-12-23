@@ -18,7 +18,7 @@ class App extends React.Component {
 			loading: false,
 			data: {},
 			value: '',
-			foundData: false,
+			foundAct: false,
 			artist: [],
 			titles: [],
 			years: [],
@@ -46,7 +46,7 @@ class App extends React.Component {
 								if (this.state.data.results.length > 0) {
 
 								// console.log(this.state.data.results[0].id);
-								this.setState({header: this.state.data.results[0].title})
+								this.setState({header: this.state.data.results[0].title, foundAct: true})
 
 									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc`)
 										.then (response => response.json())
@@ -85,7 +85,7 @@ class App extends React.Component {
 					
 				
 								else {
-									this.setState ({foundData: false, header: 'Not found, please try again.'});
+									this.setState ({foundData: false, header: 'Not found, please try again.', loading: false, foundAct: false});
 								}})
 
 		
@@ -115,7 +115,7 @@ class App extends React.Component {
 
 					<h2>{this.state.header}</h2>
 					
-					<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} />
+					<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} foundAct = {this.state.foundAct}/>
 
 				</div>
 			</div>

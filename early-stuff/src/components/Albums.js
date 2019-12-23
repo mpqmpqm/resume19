@@ -2,7 +2,12 @@ import React from 'react'
 import Album from './Album'
 
 function Albums (props) {
-    if (props.loading) {
+    
+    if (!props.foundAct) {
+        return null
+    }
+    
+    else if (props.loading) {
         return <h3>Loading...</h3>
     }
     else {
