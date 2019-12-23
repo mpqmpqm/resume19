@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Albums from "./components/Albums"
 
 //Discogs key: tYumlFYEMwUXeeIURptE
 //Discogs secret: wDhnGZAYPXjdhQDHWdduAXHQAbAjnCAE
@@ -14,7 +15,7 @@ class App extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.state = {
-			loading: true,
+			loading: false,
 			data: {},
 			value: '',
 			foundData: false,
@@ -34,7 +35,7 @@ class App extends React.Component {
 	handleSubmit (event) {
 		event.preventDefault();
 
-		this.setState ({header: 'Loading...'})
+		this.setState ({header: 'Loading...', loading: true})
 
 		fetch (`https://api.discogs.com/database/search?type=artist&q=${this.state.value}&key=${discogsKey}&secret=${discogsSecret}`)
 			.then (response => response.json())
@@ -71,6 +72,7 @@ class App extends React.Component {
 													titles: titles,
 													years: years,
 													foundData: true,
+													loading: false
 													// header: data.releases[0].artist
 												})
 
@@ -88,6 +90,8 @@ class App extends React.Component {
 
 		
 		event.target.reset();
+		event.target.focus();
+
   }
 
 
@@ -111,11 +115,7 @@ class App extends React.Component {
 
 					<h2>{this.state.header}</h2>
 					
-					
-					<h3>{this.state.foundData ? this.state.titles[0] : null}{this.state.foundData ? ` (${this.state.years[0]})` : null}</h3>
-					<h3>{this.state.foundData ? this.state.titles[1] : null}{this.state.foundData ? ` (${this.state.years[1]})` : null}</h3>
-					<h3>{this.state.foundData ? this.state.titles[2] : null}{this.state.foundData ? ` (${this.state.years[2]})` : null}</h3>
-					{/* <h3>{this.state.foundData ? this.state.titles[3] : null}{this.state.foundData ? `, (${this.state.years[3]})` : null}</h3> */}
+					<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} />
 
 				</div>
 			</div>
