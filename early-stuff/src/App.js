@@ -45,7 +45,7 @@ class App extends React.Component {
 								if (this.state.data.results.length > 0) {
 
 								// console.log(this.state.data.results[0].id);
-								this.setState({header: 'Loading...'})
+								this.setState({header: this.state.data.results[0].title})
 
 									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc`)
 										.then (response => response.json())
@@ -67,11 +67,11 @@ class App extends React.Component {
 												// console.log(years);
 
 												this.setState ({
-													artist: data.releases[0].artist,
+													// artist: data.releases[0].artist,
 													titles: titles,
 													years: years,
 													foundData: true,
-													header: data.releases[0].artist
+													// header: data.releases[0].artist
 												})
 
 												console.log(this.state.years[0]);
