@@ -60,7 +60,7 @@ class App extends React.Component {
 										act: 
 											{foundAct: true,
 											name: this.state.data.results[0].title,
-											link: `https://www.discogs.com/${this.state.data.results[0].uri}`,
+											link: `https://www.discogs.com${this.state.data.results[0].uri}`,
 											loading: false},
 										thumb: 
 											{src: this.state.data.results[0].thumb, 
