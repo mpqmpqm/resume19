@@ -2,7 +2,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: 'Arimo', sans-serif;
+}
+
+body {
+	height: 100vh;
+	border: .5vw solid black;
+	font-size: 1rem;
 }
 
 .app {
@@ -11,22 +17,28 @@
 }
 
 .app > * {
-	margin: 4vh auto;
+	margin: .5rem auto;
+}
+
+.app h1 {
+	font-size: 3.6em;
+	line-height: 1;
 }
 
 .app h2 {
-	margin: 1rem auto;
-	text-decoration: underline;
-	font-size: 1.8rem;
+	/* margin: .5rem auto; */
+	/* text-decoration: underline; */
+	font-size: 2.4em;
 }
 
 .app h3 {
-	font-size: 1.4rem;
-	margin: 1rem auto;
+	font-size: 1.4em;
+	margin: .2rem auto;
 }
 
 .app form {
 	text-align: center;
+	margin: 2rem auto 1rem auto;
 }
 
 input[type='text'] {
@@ -40,9 +52,23 @@ input[type='submit'] {
 	font-size: 1.3rem;
 }
 
+.app img {
+	width: 150px;
+	object-fit: cover;
+}
+
 .info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	text-align: right;
 }
+
+.info .thumb {
+	height: 0%;
+	align-self: flex-start;
+}
+
 
 
 
@@ -62,18 +88,17 @@ input[type='submit'] {
 	}
 
 	.info {
-		/* display: flex;
-		flex-direction: row-reverse; */
+		display: block;
 		text-align: left;
 	}
 
 	.app h2 {
 		margin-top: 0;
-		font-size: 1.6rem;
+		/* font-size: 1.6em; */
 	}
 
 	.app h3 {
-		font-size: 1.2rem;
+		/* font-size: 1.2em; */
 	}
 	
 } 
