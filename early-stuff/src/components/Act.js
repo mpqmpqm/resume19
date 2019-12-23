@@ -2,7 +2,7 @@ import React from 'react'
 
 function Act (props) {
     if (props.init) {
-        return <h3>Enter a musical act</h3>
+        return <h3>Enter a musical act, get back their earliest releases.</h3>
     }
 
     else if (props.loading) {
