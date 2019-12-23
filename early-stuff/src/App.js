@@ -67,13 +67,15 @@ class App extends React.Component {
 											loading: false},
 									})
 
-									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc`)
+									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc&page=1&per_page=3&key=${discogsKey}&secret=${discogsSecret}`)
 										.then (response => response.json())
 											.then (data => {
 
 												let i = 0;
 												let titles = []
 												let years = []
+
+												console.log(data);
 
 												for (i; i < data.releases.length; i++) {
 													if (i > 2) {
@@ -84,7 +86,6 @@ class App extends React.Component {
 													}
 													}
 												
-												// console.log(years);
 
 												this.setState ({
 													// artist: data.releases[0].artist,
@@ -124,11 +125,11 @@ class App extends React.Component {
 				</form>
 				<div className = 'info'>
 					
-					<Thumb 
-						src = {this.state.thumb.src} 
-						alt = {this.state.act.name}
-						foundAct = {this.state.act.foundAct}
-						loading = {this.state.thumb.loading}/>
+					<div class="thumb"><Thumb
+					src = {this.state.thumb.src}
+					alt = {this.state.act.name}
+					foundAct = {this.state.act.foundAct}
+					loading = {this.state.thumb.loading}/></div>
 
 					<div className = 'text'> 	
 						<Act 
