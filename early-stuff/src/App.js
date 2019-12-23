@@ -21,7 +21,7 @@ class App extends React.Component {
 			artist: [],
 			titles: [],
 			years: [],
-			header: 'Enter an artist'
+			header: 'Enter a musical act'
 		}
 	}
 
