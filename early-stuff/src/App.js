@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Albums from "./components/Albums"
+import Thumb from "./components/Thumb"
 
 //Discogs key: tYumlFYEMwUXeeIURptE
 //Discogs secret: wDhnGZAYPXjdhQDHWdduAXHQAbAjnCAE
@@ -19,10 +20,11 @@ class App extends React.Component {
 			data: {},
 			value: '',
 			foundAct: false,
-			artist: [],
+			artist: '',
 			titles: [],
 			years: [],
-			header: 'Enter a musical act'
+			header: 'Enter a musical act',
+			thumb: ''
 		}
 	}
 
@@ -46,7 +48,7 @@ class App extends React.Component {
 								if (this.state.data.results.length > 0) {
 
 								// console.log(this.state.data.results[0].id);
-								this.setState({header: this.state.data.results[0].title, foundAct: true})
+								this.setState({header: this.state.data.results[0].title, foundAct: true, thumb: this.state.data.results[0].thumb, artist: this.state.data.results[0].title})
 
 									fetch (`https://api.discogs.com/artists/${this.state.data.results[0].id}/releases?year,asc`)
 										.then (response => response.json())
@@ -113,9 +115,17 @@ class App extends React.Component {
 						style = {{display: this.state.foundData ? 'block' : 'none'}}
 					/> */}
 
-					<h2>{this.state.header}</h2>
-					
-					<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} foundAct = {this.state.foundAct}/>
+					<Thumb 
+						src = {this.state.thumb} 
+						alt = {this.state.artist}
+						foundAct = {this.state.foundAct}
+						loading = {this.state.loading}/>
+
+					<div className = 'text'> 	
+						<h2>{this.state.header}</h2>
+						
+						<Albums titles={this.state.titles} years = {this.state.years} loading = {this.state.loading} foundAct = {this.state.foundAct}/>
+					</div>
 
 				</div>
 			</div>
