@@ -75,7 +75,7 @@ class App extends React.Component {
 												let titles = []
 												let years = []
 
-												console.log(data);
+												// console.log(data);
 
 												for (i; i < data.releases.length; i++) {
 													if (i > 2) {
@@ -125,7 +125,7 @@ class App extends React.Component {
 				</form>
 				<div className = 'info'>
 					
-					<div class="thumb"><Thumb
+					<div className="thumb"><Thumb
 					src = {this.state.thumb.src}
 					alt = {this.state.act.name}
 					foundAct = {this.state.act.foundAct}
