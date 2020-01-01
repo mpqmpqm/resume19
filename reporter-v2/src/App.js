@@ -81,24 +81,40 @@ function App() {
 
   return (
     <div className = 'app'>
-    
       <button 
-        onClick={handleClick}
-        name='😘'
-        >
-          <span role='img' aria-label='kiss'>😘</span>
-      </button>
+          onClick={handleClick}
+          name='😃'
+          id='laugh'
+          >
+            <span role='img' aria-label='laugh'>😃</span>
+        </button>
+      <button 
+          onClick={handleClick}
+          name='😊'
+          id='warm'
+          >
+            <span role='img' aria-label='warm'>😊</span>
+        </button>
+        <button 
+          onClick={handleClick}
+          name='😘'
+          id='kiss'
+          >
+            <span role='img' aria-label='kiss'>😘</span>
+        </button>
       <button 
         onClick={handleClick}
         name='👎'
+        id='thumbs-down'
         >
           <span role='img' aria-label='thumbs down'>👎</span>
       </button>
       <button 
         onClick={handleClick}
         name='❓'
+        id = 'question'
         >
-          <span role='img' aria-label='?'>❓</span>
+          <span role='img' aria-label='question'>❓</span>
       </button>
 
     </div>

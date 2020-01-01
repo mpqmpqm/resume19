@@ -14,12 +14,19 @@ body {
 
 .app {
   position: absolute;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* flex-direction: column; */
   height: 40%;
   width: 92%;
   left: 4%;
   bottom: 20%;
+  /* grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); */
+  grid-template-areas: ". kiss kiss"
+                       "thumbs-down warm warm"
+                       "question laugh laugh";
+  grid-gap: .3rem;
+  
   /* left: 0; */
   /* width: 100vw; */
   /* border: 1px solid blue; */
@@ -28,14 +35,27 @@ body {
 }
 
 .app > * {
-  flex-grow: 1;
-  /* border-width: 1;
-  border-style: solid;
-  border-color: black;*/
-  /* border-radius: 50%; */
-  background-color: white; 
-  font-size: 4rem;
-  margin: .2rem 0;
-  /* border-radius: 1vw; */
-  border: 3px solid black; 
+  border: 3px solid black;
+  background: white;
+  font-size: 3.2rem;
+}
+
+#warm {
+  grid-area: warm;
+}
+
+#kiss {
+  grid-area: kiss;  
+}
+
+#laugh {
+  grid-area: laugh;
+}
+
+#thumbs-down {
+  grid-area: thumbs-down;
+}
+
+#question {
+  grid-area: question
 }
