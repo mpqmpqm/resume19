@@ -12,15 +12,16 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: aliceblue;
+  /* width: 90%; */
+  /* background-color: aliceblue; */
 }
 
 .app > * {
   flex-grow: 1;
-  border-width: 1;
+  /* border-width: 1;
   border-style: solid;
-  border-color: black;
-  border-radius: 4%;
-  background-color: white;
-  font-size: 6rem;
+  border-color: black;*/
+  /* border-radius: 50%; */
+  /* background-color: white;  */
+  font-size: 8rem;
 }
