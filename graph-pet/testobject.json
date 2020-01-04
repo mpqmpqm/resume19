@@ -1,0 +1,18 @@
+log.js:24 [HMR] Waiting for update signal from WDS...
+react-dom.development.js:27773 Download the React DevTools for a better development experience: https://fb.me/react-devtools
+webpackHotDevClient.js:137 ./src/App.js
+  Line 11:19:  'db' is assigned a value but never used                                                                        no-unused-vars
+  Line 16:10:  'countsArray' is assigned a value but never used                                                               no-unused-vars
+  Line 87:6:   React Hook useEffect has a missing dependency: 'getData'. Either include it or remove the dependency array     react-hooks/exhaustive-deps
+  Line 93:6:   React Hook useEffect has a missing dependency: 'parseToday'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+printWarnings @ webpackHotDevClient.js:137
+handleWarnings @ webpackHotDevClient.js:142
+push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:209
+webpackHotDevClient.js:137 ./src/Pet.js
+  Line 1:29:  'useState' is defined but never used               no-unused-vars
+  Line 5:12:  'firestore' is assigned a value but never used     no-unused-vars
+  Line 8:11:  'todayCompare' is assigned a value but never used  no-unused-vars
+printWarnings @ webpackHotDevClient.js:137
+handleWarnings @ webpackHotDevClient.js:142
+push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:209
+Pet.js:21 (2) [{…}, {…}]0: {1/3/2020: {…}}1: {1/4/2020: {…}}length: 2__proto__: Array(0)
