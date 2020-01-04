@@ -1,0 +1,94 @@
+- Last 14 days, last 30 days, last 90 days
+- five-line line charts: x-axis is day, y-axis is percentage total reports
+- maybe add new firestore document for each new day?
+    - No, that's stupid, but maybe, nest reports one level? e.g. 
+        const reports = {
+            [new Date().toJSON().slice(0,10)]: [
+                {
+                    mood: x,
+                    timestamp: y
+                },
+                {
+                    mood: x,
+                    timestamp: z
+                }
+            ],
+            [new Date().toJSON().slice(0,10)]: [
+                {
+                    mood: x,
+                    timestamp: y
+                },
+                {
+                    mood: x,
+                    timestamp: z
+                }
+            ]
+}
+
+Or maybe it's best to keep everything in a heap? Will likely depend on what I'm capable of executing 😜 
+
+- Date.getMonth()
+- Date.getDate() // day of the month
+- Date.getDay() //day of the week
+- Date.toJSON().slice(0,10) //e.g. '2020-01-03'
+
+const reports = {
+    [new Date().toJSON().slice(0,10)]: {
+        kisses: [timestamp, timestamp],
+        laughs: [timestamp, timestamp]
+    },
+    [new Date().toJSON().slice(0,10)]: {
+        kisses: [timestamp, timestamp],
+        laughs: [timestamp, timestamp]
+    }
+}   
+
+||
+
+const reports = [
+    {
+
+    }
+
+]
+
+//need to be able to handle a day without submissions...! We could handle that while parsing previous days
+
+Each VictoryLine takes its own data
+
+Line chart and polar chart data structures have to be totally different... 
+
+For polar charts we are plotting emoji (x) against count (y)
+
+For line charts, each line is an emoji. So we are plotting date (x) against percentage total (y)
+
+Sample data object from firestore:
+
+reports: [
+  {
+    "1/3/2020": {
+      "kisses": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "1/4/2020": {
+      "kisses": [
+        1,
+        2,
+        3
+      ]
+    }
+  }
+]
+
+
+setState(reports => {
+    return (
+        reports: firestore.FieldValue.arrayUnion ({today: {
+            kisses: firestore.FieldValue.arrayUnion (timestamp)
+        }})
+})

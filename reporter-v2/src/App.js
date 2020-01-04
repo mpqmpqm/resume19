@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import './App.css';
 import { FireContext } from './components/FireContextProvider';
+import {Chart} from "./components/Chart"
 
 // '😊'
 // '😄'
@@ -77,9 +78,14 @@ function App() {
     // )
   }
 
+  const showData = () => {
+    
+  }
 
 
   return (
+    <>
+    {/* <Chart /> */}
     <div className = 'app'>
       <button 
           onClick={handleClick}
@@ -118,6 +124,7 @@ function App() {
       </button>
 
     </div>
+    </>
   );
 }
 
