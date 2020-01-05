@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  border: 1vh solid black;
+}
+
+.app {
+  position: absolute;
+  display: grid;
+  height: 40%;
+  width: 92%;
+  left: 4%;
+  bottom: 20%;
+  grid-template-areas: ". kiss kiss"
+                       "thumbs-down warm warm"
+                       "question laugh laugh";
+  grid-gap: .3rem;
+}
+
+.app > * {
+  border: 3px solid black;
+  background: white;
+  font-size: 3.2rem;
+}
+
+#warm {
+  grid-area: warm;
+}
+
+#kiss {
+  grid-area: kiss;  
+}
+
+#laugh {
+  grid-area: laugh;
+}
+
+#thumbs-down {
+  grid-area: thumbs-down;
+}
+
+#question {
+  grid-area: question
+}

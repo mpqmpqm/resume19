@@ -3,7 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <h1>MPQ</h1>
+    <div className='app'>
+
+    </div>
   );
 }
 
