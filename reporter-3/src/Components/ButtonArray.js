@@ -110,6 +110,7 @@ const ButtonArray = ({toggleData, isDataShowing}) => {
             }
         }
         )
+        
         placeGunObject = 
             {
                 '😘': [],
@@ -129,7 +130,7 @@ const ButtonArray = ({toggleData, isDataShowing}) => {
                 id='show-data'
             >
                 {isDataShowing ? 
-                    <Link to='/reporter-3'>
+                    <Link to='/reporter-3/'>
                         Hide data
                     </Link> : 
                     <Link to='/reporter-3/today'>Show data</Link>}
