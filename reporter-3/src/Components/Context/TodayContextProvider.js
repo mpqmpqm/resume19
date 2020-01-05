@@ -24,7 +24,7 @@ const TodayContextProvider = (props) => {
                 '😊': [],
                 '😃': [],
                 '👎': [],
-                '❓':[]
+                '❓': []
             }, {merge: true})
             .then(getTodayDataObject)
         })
@@ -35,7 +35,7 @@ const TodayContextProvider = (props) => {
     }, [])
 
     return (
-        <TodayContext.Provider value = {{todayDocRef, todayDataObject, setTodayDataObject}}>
+        <TodayContext.Provider value = {{todayDocRef, todayDataObject, setTodayDataObject, today}}>
             {props.children}
         </TodayContext.Provider>
     )

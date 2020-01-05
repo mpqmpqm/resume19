@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { FireContextProvider } from './Components/FireContextProvider';
-import { TodayContextProvider } from './Components/TodayContextProvider';
+import { FireContextProvider } from './Components/Context/FireContextProvider';
+import { TodayContextProvider } from './Components/Context/TodayContextProvider';
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
     <FireContextProvider>
         <TodayContextProvider>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </TodayContextProvider>
     </FireContextProvider>
     , document.getElementById('root'));
