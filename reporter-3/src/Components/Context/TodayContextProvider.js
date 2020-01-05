@@ -13,28 +13,41 @@ const TodayContextProvider = (props) => {
         return db.doc(`users/dev/${todayString.slice(-4)}/${todayString.slice(0,3)} ${todayString.slice(-4)}/dailys/${todayString}`)
     })();
 
+    // console.log(todayDocRef);
+
     const [todayDataObject, setTodayDataObject] = useState({})
 
     const getTodayDataObject = () => {
         todayDocRef.get()
-        .then (doc => setTodayDataObject (doc.data()))
-        .catch (() => {
-            todayDocRef.set({
-                '😘': [],
-                '😊': [],
-                '😃': [],
-                '👎': [],
-                '❓': []
-            }, {merge: true})
-            .then(getTodayDataObject)
-        })
+        .then (doc => 
+            {
+                if (doc.exists)
+                {
+                    setTodayDataObject(doc.data())
+                } else {
+                    todayDocRef.set({
+                        '😘': [],
+                        '😊': [],
+                        '😃': [],
+                        '👎': [],
+                        '❓': []
+                    }, {merge: true})
+                    .then(getTodayDataObject)
+                }
+            }
+        )
+        .catch (error => {console.log(error);})
     }
 
+    // console.log(todayDataObject);
+
     useEffect(() => {
+        console.log('setting today object');
         getTodayDataObject();
     }, [])
 
     return (
+        
         <TodayContext.Provider value = {{todayDocRef, todayDataObject, setTodayDataObject, today}}>
             {props.children}
         </TodayContext.Provider>

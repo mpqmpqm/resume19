@@ -1,7 +1,8 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Consolas', 'Helvetica', sans-serif;
 }
 
 html, body, #root {
@@ -12,23 +13,38 @@ body {
   border: 1vh solid black;
 }
 
-.app {
+.charts nav {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+}
+
+.buttonArray {
   position: absolute;
   display: grid;
   height: 40%;
   width: 92%;
   left: 4%;
   bottom: 20%;
-  grid-template-areas: ". kiss kiss"
-                       "thumbs-down warm warm"
-                       "question laugh laugh";
-  grid-gap: .3rem;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: ". kiss"
+                       "thumbs-down warm"
+                       "question laugh";
+  gap: .3rem;
 }
 
-.app > * {
+.buttonArray > * {
+  font-family: 'Consolas', 'Helvetica', sans-serif;
   border: 3px solid black;
   background: white;
   font-size: 3.2rem;
+}
+
+
+
+#show-data{
+  font-size: 2rem;
 }
 
 #warm {
@@ -49,4 +65,4 @@ body {
 
 #question {
   grid-area: question
-} */
+}

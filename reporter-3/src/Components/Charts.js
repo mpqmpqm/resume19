@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { FireContext } from './Context/FireContextProvider'
 import { TodayContext } from './Context/TodayContextProvider'
 import {Link, Route, Switch} from 'react-router-dom'
+import TodayChart from './Charts/TodayChart'
 
 const Charts = () => {
     const {db, firestore} = useContext (FireContext)
@@ -24,13 +25,13 @@ const Charts = () => {
     }
 
     return (
-        <div>
+        <>
             <Switch>
                 <Route exact path='/'>
                     {/*<NoData />*/}
                 </Route> 
                 <Route path='/today'>
-                    {/* <TodayGraph data = {todayDataObject}/> */}
+                    {<TodayChart todayDataObject={todayDataObject} />}
                 </Route>
                 <Route path='/last7'>
                     {/* <LastSevenGraph getDocRefs = {getLastDocRefs}/> */}
@@ -40,11 +41,12 @@ const Charts = () => {
                 </Route>
 
             </Switch>
-
-            <Link to='/today'>Today</Link>
-            <Link to='/last7'>Past week</Link>
-            <Link to='/last14'>Past fortnight</Link>
-        </div>
+            <nav>
+                <Link to='/today'>Today</Link>
+                <Link to='/last7'>Past week</Link>
+                <Link to='/last14'>Past fortnight</Link>
+            </nav>
+        </>
     )
 
 }
