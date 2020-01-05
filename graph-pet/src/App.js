@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import './App.css';
-import {VictoryBar, VictoryChart, VictoryPolarAxis, VictoryLabel} from 'victory'
+// import {VictoryBar, VictoryChart, VictoryPolarAxis, VictoryLabel} from 'victory'
 import {FireContext} from './FireContextProvider'
 import Pet from "./Pet"
 
@@ -107,7 +107,7 @@ function App() {
   <>
     <Pet />
     <button onClick = {addKiss}>Add kiss</button>
-    <VictoryChart polar
+    {/* <VictoryChart polar
       domain={{x:[0,5]}}
       // domainPadding = {1}  
     >
@@ -120,7 +120,7 @@ function App() {
         labelComponent = {<VictoryLabel/>}
         style={{ data: { fill: "#c43a31", width: 50 }}}
       />
-    </VictoryChart>
+    </VictoryChart> */}
   </>
   );
 }

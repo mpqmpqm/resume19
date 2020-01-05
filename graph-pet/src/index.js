@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { FireContextProvider } from './FireContextProvider';
+import { DataContextProvider } from './dataContextProvider';
 
 ReactDOM.render(
     <FireContextProvider>
-        <App />
+        <DataContextProvider>
+            <App />
+        </DataContextProvider>
     </FireContextProvider>
         , document.getElementById('root'));
 

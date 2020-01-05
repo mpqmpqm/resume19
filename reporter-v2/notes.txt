@@ -92,3 +92,17 @@ setState(reports => {
             kisses: firestore.FieldValue.arrayUnion (timestamp)
         }})
 })
+
+<FireContextProvider>
+    <TodayContextProvider value = {todayDocRef, todayDataObject}>
+      <App />
+        <Charts> //accepts todayDataObject
+          <Today /> 
+          <SevenDay />
+          <30Day /> 
+        </Charts>
+        <Buttons /> //edits todayDataObject
+      </App>
+    </TodayContextProvider>
+</FireContextProvider>
+  
