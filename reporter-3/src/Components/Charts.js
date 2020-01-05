@@ -27,24 +27,21 @@ const Charts = () => {
     return (
         <>
             <Switch>
-                <Route exact path='/'>
-                    {/*<NoData />*/}
-                </Route> 
-                <Route path='/today'>
+                <Route path='/reporter-3/today'>
                     {<TodayChart todayDataObject={todayDataObject} />}
                 </Route>
-                <Route path='/last7'>
+                <Route path='/reporter-3/last7'>
                     {/* <LastSevenGraph getDocRefs = {getLastDocRefs}/> */}
                 </Route>
-                <Route path='/last14'>
+                <Route path='/reporter-3/last14'>
                     {/* <LastFortnightGraph /> getDocRefs = {getLastDocRefs}*/}
                 </Route>
 
             </Switch>
             <nav>
-                <Link to='/today'>Today</Link>
-                <Link to='/last7'>Past week</Link>
-                <Link to='/last14'>Past fortnight</Link>
+                <Link to='/reporter-3/today'>Today</Link>
+                <Link to='/reporter-3/last7'>Past week</Link>
+                <Link to='/reporter-3/last14'>Past fortnight</Link>
             </nav>
         </>
     )

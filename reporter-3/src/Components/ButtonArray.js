@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { FireContext } from './Context/FireContextProvider'
 import { TodayContext } from './Context/TodayContextProvider'
+import {Link} from 'react-router-dom'
 
 let placeGunObject = {
     '😘': [],
@@ -127,7 +128,11 @@ const ButtonArray = ({toggleData, isDataShowing}) => {
                 onClick={toggleData}
                 id='show-data'
             >
-                {isDataShowing ? 'Hide data' : 'Show data'}
+                {isDataShowing ? 
+                    <Link to='/reporter-3'>
+                        Hide data
+                    </Link> : 
+                    <Link to='/reporter-3/today'>Show data</Link>}
                 </button> 
             <button 
                 onClick={handleClick}
