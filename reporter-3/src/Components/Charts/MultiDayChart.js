@@ -153,7 +153,44 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
             
                 
                 />
-            <VictoryLine 
+
+            {
+                [
+                    {
+                        emoji: '😘',
+                        stroke: '#00ABFD'
+                    },
+                    {
+                        emoji: '😊',
+                        stroke: '#FD8B3F'
+                    },
+                    {
+                        emoji: '😃',
+                        stroke: '#C94214'
+                    },
+                    {
+                        emoji: '👎',
+                        stroke: '#3C4A96'
+                    },
+                    {
+                        emoji: '❓',
+                        stroke: '#1431C9'
+                    },
+                ].map (pair => (
+                    <VictoryLine 
+                        data={[...parsedDataObject[pair.emoji], ...todayParsed[pair.emoji]]}
+                        x= {'date'}
+                        y = {'count'}
+                        labels={({index}) => (index === String(pastDays) ? pair.emoji: '')}
+                        interpolation='natural'
+                        style={{data: {stroke: pair.stroke, strokeWidth: '4px'}, labels: {fontSize:20, padding:0 }}}
+                        animate={{ duration: 1000 }}
+                        key={pair.emoji}
+                    />
+                ))
+            }
+            
+            {/* <VictoryLine 
                 data={[...parsedDataObject['😘'], ...todayParsed['😘']]}
                 x= {'date'}
                 y = {'count'}
@@ -197,7 +234,7 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
                 interpolation='natural'
                 style={{data: {stroke: '#1431C9', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
                 animate={{ duration: 100 }}
-            />
+            /> */}
         </VictoryChart>
         )}
         </>
