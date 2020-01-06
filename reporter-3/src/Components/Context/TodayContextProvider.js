@@ -7,6 +7,7 @@ const TodayContext = React.createContext()
 const TodayContextProvider = (props) => {
     const today = moment()
     const {db} = useContext(FireContext)
+    const todayDateString = today.clone().format('MMM DD YYYY')
 
     const todayDocRef = (() => {
         const todayString = today.clone().format('MMM DD YYYY')
@@ -48,7 +49,7 @@ const TodayContextProvider = (props) => {
 
     return (
         
-        <TodayContext.Provider value = {{todayDocRef, todayDataObject, setTodayDataObject, today}}>
+        <TodayContext.Provider value = {{todayDocRef, todayDataObject, setTodayDataObject, today, todayDateString}}>
             {props.children}
         </TodayContext.Provider>
     )

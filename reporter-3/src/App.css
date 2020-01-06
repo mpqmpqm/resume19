@@ -5,7 +5,7 @@
   font-family: 'Consolas', 'Helvetica', sans-serif;
 }
 
-html, body, #root {
+html, body, #root, .app {
   height: 100%;
 }
 
@@ -13,10 +13,19 @@ body {
   border: 1vh solid black;
 }
 
+.charts {
+  height: 35%
+}
+
 .charts nav {
   display: flex;
   justify-content: space-evenly;
   font-size: 1.2rem;
+}
+
+.chart {
+  width: 100%;
+  min-height: 100%;
 }
 
 .buttonArray {

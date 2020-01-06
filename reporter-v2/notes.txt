@@ -105,4 +105,9 @@ setState(reports => {
       </App>
     </TodayContextProvider>
 </FireContextProvider>
+
+😘 = [{date: string, count: number}, {date: string, count: number}]
+😊 = [{date: string, count: number}, {date: string, count: number}]
+
+
   
