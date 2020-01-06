@@ -19,13 +19,32 @@ const TodayChart = ({todayDataObject}) => {
         <VictoryChart 
             polar
             domain={{x:[0,5]}}
+            
         >
-            <VictoryPolarAxis tickCount={5}/>
+            <VictoryPolarAxis 
+                style = {
+                    {
+                        axis:
+                            {
+                            strokeWidth: '2px'
+                            }
+                        ,
+                    tickLabels: 
+                        {
+                        angle: 0, 
+                        fontSize: 30, 
+                        padding: 20
+                        }
+                    }
+                    
+                    
+                }
+            />
             <VictoryBar
                 data={parsedToday}
                 x="key"
                 y="count"
-                style={{ data: { fill: "#c43a31", width: 50 }}}
+                style={{ data: { fill: "#c43a31" , stroke: 'black', strokeWidth: '2px'}}}
             />
         </VictoryChart>
     )

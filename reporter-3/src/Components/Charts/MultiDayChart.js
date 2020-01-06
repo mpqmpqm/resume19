@@ -140,14 +140,15 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
         <>
         {loading ? <div className='chart'>Loading...</div> : (
         <VictoryChart
-            domainPadding={4}
+            // domainPadding={4}
             >
-            <VictoryAxis 
-                fixLabelOverlap 
-                style={{ tickLabels: { padding: 1, fontSize: 8 }}}
-
+            <VictoryAxis  
+                style={{ ticks: {stroke: 'black', size: 5}, tickLabels: { padding: 12, fontSize: 10, angle: -30}}}
+                tickCount={pastDays+1}
             />
-            <VictoryAxis dependentAxis />
+            <VictoryAxis dependentAxis 
+                tickFormat = {((text) => `${text}%`)}
+                />
             <VictoryLine 
                 data={[...parsedDataObject['😘'], ...todayParsed['😘']]}
                 x= {'date'}
