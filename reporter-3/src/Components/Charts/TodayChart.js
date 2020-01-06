@@ -18,8 +18,7 @@ const TodayChart = ({todayDataObject}) => {
     return (
         <VictoryChart 
             polar
-            domain={{x:[0,5]}}
-            
+            domain={{x:[0,5]}}    
         >
             <VictoryPolarAxis 
                 style = {
@@ -36,15 +35,23 @@ const TodayChart = ({todayDataObject}) => {
                         padding: 20
                         }
                     }
-                    
-                    
                 }
+
             />
+
+            {/* <VictoryPolarAxis dependentAxis 
+                style = {{
+                    tickLabels: 
+                    {angle: 90, fontSize: 8}
+                }}
+                /> */}
             <VictoryBar
+                // animate={{ duration: 100 }}
                 data={parsedToday}
                 x="key"
                 y="count"
                 style={{ data: { fill: "#c43a31" , stroke: 'black', strokeWidth: '2px'}}}
+                labels= {({datum}) => (datum.count)}
             />
         </VictoryChart>
     )

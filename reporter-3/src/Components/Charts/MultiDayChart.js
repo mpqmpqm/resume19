@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 import {FireContext} from '../Context/FireContextProvider'
-import {VictoryChart, VictoryLine, VictoryAxis} from 'victory'
+import {VictoryChart, VictoryLine, VictoryAxis, VictoryLabel} from 'victory'
 import KissPoint from './PointComponents/KissPoint'
 
 let dataObject = {}
@@ -140,7 +140,7 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
         <>
         {loading ? <div className='chart'>Loading...</div> : (
         <VictoryChart
-            // domainPadding={4}
+        domainPadding={{x: [0, 10], y: 10}}
             >
             <VictoryAxis  
                 style={{ ticks: {stroke: 'black', size: 5}, tickLabels: { padding: 12, fontSize: 10, angle: -30}}}
@@ -148,41 +148,55 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
             />
             <VictoryAxis dependentAxis 
                 tickFormat = {((text) => `${text}%`)}
+                tickCount={5}
+                animate={{ duration: 1000 }}
+            
+                
                 />
             <VictoryLine 
                 data={[...parsedDataObject['😘'], ...todayParsed['😘']]}
                 x= {'date'}
                 y = {'count'}
+                labels={({index}) => index == pastDays ? '😘': ''}
                 interpolation='natural'
-                style={{data: {stroke: '#00ABFD', strokeWidth: '4px'}}}
+                style={{data: {stroke: '#00ABFD', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
+                animate={{ duration: 100 }}
             />
             <VictoryLine 
                 data={[...parsedDataObject['😊'], ...todayParsed['😊']]}
                 x= {'date'}
                 y = {'count'}
+                labels={({index}) => index == pastDays ? '😊': ''}
                 interpolation='natural'
-                style={{data: {stroke: '#FD8B3F', strokeWidth: '4px'}}}
+                style={{data: {stroke: '#FD8B3F', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
+                animate={{ duration: 100 }}
             />
             <VictoryLine 
                 data={[...parsedDataObject['😃'], ...todayParsed['😃']]}
                 x= {'date'}
                 y = {'count'}
+                labels={({index}) => index == pastDays ? '😃': ''}
                 interpolation='natural'
-                style={{data: {stroke: '#C94214', strokeWidth: '4px'}}}
+                style={{data: {stroke: '#C94214', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
+                animate={{ duration: 100 }}
             />
             <VictoryLine 
                 data={[...parsedDataObject['👎'], ...todayParsed['👎']]}
                 x= {'date'}
                 y = {'count'}
+                labels={({index}) => index == pastDays? '👎': ''}
                 interpolation='natural'
-                style={{data: {stroke: '#3C4A96', strokeWidth: '4px'}}}
+                style={{data: {stroke: '#3C4A96', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
+                animate={{ duration: 100 }}
             />
             <VictoryLine 
                 data={[...parsedDataObject['❓'], ...todayParsed['❓']]}
                 x= {'date'}
                 y = {'count'}
+                labels={({index}) => index == pastDays ? '❓': ''}
                 interpolation='natural'
-                style={{data: {stroke: '#1431C9', strokeWidth: '4px'}}}
+                style={{data: {stroke: '#1431C9', strokeWidth: '4px'}, labels: {fontSize:20, padding:4 }}}
+                animate={{ duration: 100 }}
             />
         </VictoryChart>
         )}
