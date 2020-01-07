@@ -11,7 +11,7 @@ const TodayContextProvider = (props) => {
 
     const todayDocRef = (() => {
         const todayString = today.clone().format('MMM DD YYYY')
-        return db.doc(`users/dev/${todayString.slice(-4)}/${todayString.slice(0,3)} ${todayString.slice(-4)}/dailys/${todayString}`)
+        return db.doc(`users/MPQ/${todayString.slice(-4)}/${todayString.slice(0,3)} ${todayString.slice(-4)}/dailys/${todayString}`)
     })();
 
     // console.log(todayDocRef);
@@ -43,7 +43,7 @@ const TodayContextProvider = (props) => {
     // console.log(todayDataObject);
 
     useEffect(() => {
-        console.log('setting today object');
+        // console.log('setting today object');
         getTodayDataObject();
     }, [])
 

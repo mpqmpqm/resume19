@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 import {FireContext} from '../Context/FireContextProvider'
-import {VictoryChart, VictoryLine, VictoryAxis, VictoryLabel} from 'victory'
-import KissPoint from './PointComponents/KissPoint'
+import {VictoryChart, VictoryLine, VictoryAxis} from 'victory'
 
 let dataObject = {}
 
@@ -57,7 +56,7 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
     
     function getLastDocRefs (lastDateStrings) {
         return lastDateStrings.map (dateString => (
-            db.doc(`users/dev/${dateString.slice(-4)}/${dateString.slice(0,3)} ${dateString.slice(-4)}/dailys/${dateString}`)))
+            db.doc(`users/MPQ/${dateString.slice(-4)}/${dateString.slice(0,3)} ${dateString.slice(-4)}/dailys/${dateString}`)))
     }
 
     function setLastDocs (lastDocRefs) {
@@ -166,7 +165,7 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
                     },
                     {
                         emoji: '😃',
-                        stroke: '#C94214'
+                        stroke: '#1431C9'
                     },
                     {
                         emoji: '👎',
@@ -174,7 +173,7 @@ const MultiDayChart = ({todayDataObject, pastDays, todayDateString, today}) => {
                     },
                     {
                         emoji: '❓',
-                        stroke: '#1431C9'
+                        stroke: '#C94214'
                     },
                 ].map (pair => (
                     <VictoryLine 

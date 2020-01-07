@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { FireContext } from './Context/FireContextProvider'
 import { TodayContext } from './Context/TodayContextProvider'
 import {Link} from 'react-router-dom'
@@ -16,7 +16,7 @@ let timerKey = 0
 
 const ButtonArray = ({toggleData, isDataShowing}) => {
 
-    const {db, firestore} = useContext(FireContext)
+    const {firestore} = useContext(FireContext)
     const {todayDocRef, todayDataObject, setTodayDataObject} = useContext(TodayContext)
     
     // const [placeGunObject, setPlaceGunObject] = useState ({
@@ -185,7 +185,6 @@ const ButtonArray = ({toggleData, isDataShowing}) => {
                     aria-label='question'>❓
                 </span>
             </button>
-            
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {VictoryChart, VictoryBar, VictoryPolarAxis} from 'victory'
 
 const TodayChart = ({todayDataObject}) => {
