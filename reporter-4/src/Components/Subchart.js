@@ -1,80 +1,57 @@
-import React, {
-	useEffect,
-	useMemo,
-	useState,
-	useCallback
-} from "react"
+import React, { useEffect, useState } from "react"
 import { useToday } from "../utils/useToday"
+import { SubSubChart } from "./SubSubChart"
 
-export const Subchart = ({ todayData, prevDayData }) => {
+export const Subchart = ({ prevDayData, todayData }) => {
 	const { todayString } = useToday()
 
-	const [todayParsed, setTodayParsed] = useState()
+	// const [todayParsed, setTodayParsed] = useState([])
 
-	const parseToday = useCallback(
-		function parseToday(todayData) {
-			console.log(`parsing today`)
-			const totalToday = Object.keys(todayData).reduce(
-				(sum, emoji) => {
-					sum += todayData[emoji].length
-					return sum
-				},
-				0
-			)
+	let todayParsed = Object.keys(todayData).reduce((endObj, emoji) => {
+		endObj[emoji] = [
+			{
+				date: todayString,
+				percent:
+					(todayData[emoji]["timestamps"].length /
+						Object.keys(todayData).reduce((sum, emoji) => {
+							return sum + todayData[emoji]["timestamps"].length
+						}, 0)) *
+						100 || 0
+			}
+		]
+		return endObj
+	}, {})
+	// console.log(todayParsed)
 
-			return ["😘", "😊", "😃", "👎", "❓"].reduce(
-				(endObj, emoji) => {
-					endObj[emoji] = [
-						{
-							date: todayString,
-							percent:
-								Math.floor(
-									(todayData[emoji].length / totalToday) * 100
-								) || 0
-						}
-					]
-					return endObj
-				},
-				{}
-			)
-		},
-		[todayString]
+	// useEffect(() => {
+	// 	todayParsed = Object.keys(todayData).reduce((endObj, emoji) => {
+	// 		endObj[emoji] = [
+	// 			{
+	// 				date: todayString,
+	// 				percent:
+	// 					(todayData[emoji]["timestamps"].length /
+	// 						Object.keys(todayData).reduce((sum, emoji) => {
+	// 							return sum + todayData[emoji]["timestamps"].length
+	// 						}, 0)) *
+	// 						100 || 0
+	// 			}
+	// 		]
+	// 		return endObj
+	// 	}, {})
+	// }, [todayData, todayString])
+
+	return (
+		<div className="chart">
+			{Object.keys(todayParsed).length ? (
+				<SubSubChart
+					prevDataParsed={prevDayData}
+					todayParsed={todayParsed}
+				/>
+			) : (
+				<div>
+					<button onClick={() => console.log(`tester`)}>wut</button>
+				</div>
+			)}
+		</div>
 	)
-
-	useEffect(() => {
-		setTodayParsed(parseToday(todayData))
-	}, [todayData, parseToday])
-
-	const prevDaysParsed = useMemo(() => {
-		console.log(`rememo`)
-		const prevDaysParsed = ["😘", "😊", "😃", "👎", "❓"].reduce(
-			(endObj, emoji) => {
-				endObj[emoji] = [
-					...prevDayData.reduce((endArray, entry, i) => {
-						endArray = [
-							...endArray,
-							{
-								date: entry["date"],
-								percent:
-									Math.floor(
-										(prevDayData[i][emoji] /
-											Object.keys(prevDayData[i])
-												.filter(key => key !== `date`)
-												.reduce((sum, emoji) => {
-													return sum + prevDayData[i][emoji]
-												}, 0)) *
-											100
-									) || 0
-							}
-						]
-						return endArray
-					}, [])
-				]
-				return endObj
-			},
-			{}
-		)
-		return prevDaysParsed
-	}, [prevDayData])
-	return <div>{Object.keys(prevDaysParsed)[0]}</div>
 }

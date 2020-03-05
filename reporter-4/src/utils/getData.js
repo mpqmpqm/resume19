@@ -1,4 +1,4 @@
-import { getDoc } from "./getDoc"
+import { getDayDocs } from "./getDoc"
 
 export function addDocSnapshot(todayDoc, setData, docExists = false) {
 	let unsubscribe
@@ -45,5 +45,7 @@ export function getPreviousDateStrings(numDays) {
 }
 
 export function getPreviousDayDocs(numDays, db) {
-	return getPreviousDateStrings(numDays).map(str => getDoc(str, db))
+	return getPreviousDateStrings(numDays).map(str =>
+		getDayDocs(str, db)
+	)
 }

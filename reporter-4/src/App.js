@@ -3,18 +3,25 @@ import "./App.css"
 import { ButtonMenu } from "./Components/ButtonMenu"
 import { useAuth } from "./AuthState"
 import { ChartPicker } from "./Components/ChartPicker"
+import { useToday } from "./utils/useToday"
 
 function App() {
 	const { state, dispatch } = useAuth()
+	const { todayData } = useToday()
+
+	// console.log(todayData)
 
 	return !state.isAuthenticated ? (
-		<button
-			onClick={() => {
-				dispatch({ type: "LOGIN_SUCCESS" })
-			}}
-		>
-			Login
-		</button>
+		<>
+			<button
+				onClick={() => {
+					dispatch({ type: "LOGIN_SUCCESS" })
+				}}
+			>
+				Login
+			</button>
+			<div>{JSON.stringify(todayData)}</div>
+		</>
 	) : (
 		<div className="App">
 			<ChartPicker />
