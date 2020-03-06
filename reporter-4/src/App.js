@@ -21,7 +21,6 @@ function App() {
 			>
 				Login
 			</button>
-			<div>{JSON.stringify(todayData)}</div>
 		</>
 	) : (
 		<div className="App">

@@ -6,7 +6,6 @@ import React, {
 	useMemo
 } from "react"
 import { getPreviousDayDocs } from "../utils/getData"
-import { addDocSnapshot } from "../utils/getData"
 import { useToday } from "../utils/useToday"
 import { FireContext } from "../FireContextProvider"
 import { Subchart } from "./Subchart"
@@ -179,20 +178,11 @@ export function Chart({ prevDayCount }) {
 
 	return (
 		<>
-			<div>hi</div>
-			<button
-				onClick={() => {
-					// console.log(prevDayData)
-				}}
-			>
-				Show
-			</button>
 			{Object.keys(prevDayData).length ? (
 				<Subchart prevDayData={prevDayData} todayData={todayData} />
 			) : (
 				<div>lul</div>
 			)}
-			<button onClick={() => console.log(prevDayData)}>data</button>{" "}
 		</>
 	)
 }

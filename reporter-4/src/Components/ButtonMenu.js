@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { useToday } from "../utils/useToday"
 import { FireContext } from "../FireContextProvider"
 import "firebase/firestore"
@@ -8,10 +8,12 @@ export const ButtonMenu = () => {
 		todayString,
 		setTodayString,
 		getTodayString,
-		todayDocs
+		todayDocs,
+		todayData
 	} = useToday()
 
 	const { firestore } = useContext(FireContext)
+	const [dataShowing, setDataShowing] = useState(false)
 
 	function handleClick(e) {
 		const emoji = e.target.name || e.target.innerText
@@ -32,30 +34,32 @@ export const ButtonMenu = () => {
 
 	return (
 		<div className="button-menu">
-			<button name="😘" onClick={handleClick}>
-				<span role="img" aria-label="kiss">
-					😘
-				</span>
-			</button>
-			<button name="😊" onClick={handleClick}>
-				<span role="img" aria-label="warm">
-					😊
-				</span>
-			</button>
-			<button name="😃" onClick={handleClick}>
-				<span role="img" aria-label="laugh">
-					😃
-				</span>
-			</button>
-			<button name="👎" onClick={handleClick}>
-				<span role="img" aria-label="thumbs down">
-					👎
-				</span>
-			</button>
-			<button name="❓" onClick={handleClick}>
-				<span role="img" aria-label="questioning">
-					❓
-				</span>
+			{[
+				["😘", "kiss"],
+				["😊", "warm"],
+				["😃", "laugh"],
+				["👎", "thumbs-down"],
+				["❓", "questioning"]
+			].map(pair => (
+				<button
+					name={pair[0]}
+					onClick={handleClick}
+					disabled={dataShowing}
+					key={pair[0]}
+					className="report-button"
+				>
+					<span role="img" aria-label={pair[1]}>
+						{!dataShowing
+							? pair[0]
+							: todayData[pair[0]]["timestamps"].length}
+					</span>
+				</button>
+			))}
+			<button
+				onMouseDown={() => setDataShowing(true)}
+				onMouseUp={() => setDataShowing(false)}
+			>
+				Show
 			</button>
 		</div>
 	)

@@ -1,3 +1,66 @@
+html,
+body {
+	height: 100%;
+}
 button:active {
 	background-color: blue;
+}
+
+.report-button {
+	/* width: 30px; */
+}
+
+.button-menu {
+	position: absolute;
+	display: grid;
+	height: 40%;
+	width: 92%;
+	left: 4%;
+	bottom: 20%;
+	grid-template-columns: 1fr 2fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-areas:
+		". kiss"
+		"thumbs-down warm"
+		"question laugh";
+	gap: 0.3rem;
+}
+
+.buttonArray > * {
+	font-family: "Consolas", "Helvetica", sans-serif;
+	border: 3px solid black;
+	background: white;
+	font-size: 3.2rem;
+}
+
+[name="😘"] {
+	grid-area: kiss;
+}
+
+[name="😊"] {
+	grid-area: warm;
+}
+
+[name="😃"] {
+	grid-area: laugh;
+}
+
+[name="👎"] {
+	grid-area: thumbs-down;
+}
+
+[name="❓"] {
+	grid-area: question;
+}
+
+.chart {
+	height: 35%;
+}
+
+.chart > * {
+	width: 100%;
+}
+
+.chart svg {
+	height: 100% !important;
 }
