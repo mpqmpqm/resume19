@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 90vh;
+    /* font-size: calc(98vh / 5); */
+}
+
+.app > * {
+    width: 100%;
+    flex-grow: 1;
+    font-size: calc(45vh / 5);
+}
