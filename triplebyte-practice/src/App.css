@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: #ECEEEE;
+}
+
+.App {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    margin: 0 25px;
+    gap: 25px;
+}
+
+.column > button {
+    height: 30px;
+}
+
+.App > * {
+    margin-right: 25px;
+    flex-basis: 20%;
+    flex-grow: 1
+}
+
+.App > div:last-of-type {
+    margin-right: 0;
+}
+
+.App .column:first-child h2{
+    background-color: #8e6e95;
+}
+
+.App .column:nth-child(2) h2{
+    background-color: #39a59c;
+}
+
+.App .column:nth-child(3) h2{
+    background-color: #344759;
+}
+
+.App .column:nth-child(4) h2{
+    background-color: #e8741e;
+}
+
+.App h2 {
+    text-align: center;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    color: white;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.column div > * {
+    border-radius: 4px;
+}
+
+.card {
+    display: flex;
+    /* justify-content: space-between; */
+    padding: 14px 8px;
+    margin: 12px 0;
+    background: white;
+
+}
+
+.card p {
+    padding: 0 12px;
+}
+
+.card *:last-child{
+    margin-left: auto;
+}
+
+.card button {
+    background: none;
+    border-width: 0;
+    width: 15px;
+}
+

@@ -30,7 +30,7 @@ const DataMigrator = () => {
                         '👎':[],
                         '❓':[]
                 }
-            } else {
+            } else { //LOL because of this I miss the first report of each day... No else clause necessary.
                 endObj[moment.unix(report.timestamp.seconds).format('MMM DD YYYY')][report.mood] = [
                     ...endObj[moment.unix(report.timestamp.seconds).format('MMM DD YYYY')][report.mood], report.timestamp
                 ]

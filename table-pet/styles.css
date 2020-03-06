@@ -1,0 +1,166 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Consolas", sans-serif;
+}
+
+body {
+	position: relative;
+}
+
+#background {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: rgb(248, 255, 255);
+	background: linear-gradient(
+		180deg,
+		rgba(248, 255, 255, 0.9110994739692753) 0%,
+		rgba(137, 192, 251, 0.8970938717283788) 95%
+	);
+	z-index: 1;
+}
+
+#root {
+	display: grid;
+}
+
+.node-unpublished {
+	background-color: white;
+}
+
+body :not(#background) {
+	z-index: 3;
+}
+
+
+#timeline {
+	max-width: 768px;
+	margin: 0 auto;
+	position: relative;
+	/* background-color:  rgba(0, 0, 255, 0.199); */
+}
+
+#timeline > * {
+	width: 100%;
+}
+
+#timeline .year {
+	/* display: flex;
+    flex-direction: column; */
+	display: grid;
+	grid-template-columns: 1fr;
+	/* gap: 1em; */
+	/* margin: 1em 0; */
+	/* border-top: 1px solid black; */
+	/* border-bottom: 1px solid black; */
+}
+
+#timeline .year > h2 {
+	text-align: center;
+	background-color: rgba(66, 141, 252, 0.8);
+	padding: 0.6em 0;
+	color: white;
+	font-weight: 400;
+	margin: 1em 0;
+	font-size: 1.8rem;
+}
+
+#timeline .year:first-of-type > h2 {
+	margin-top: 0;
+}
+
+#timeline .year:last-of-type .node:last-of-type {
+	margin-bottom: 2rem;
+}
+
+#timeline .node {
+	padding: 1em;
+	/* background: rgba(198, 0, 248, 0.144); */
+	width: 90%;
+	margin: 0 auto;
+	border-top: 1px solid black;
+
+	/* border-radius: 1em; */
+	/* background: rgba(226, 188, 188, 0.336) */
+}
+
+/* #timeline::before {
+    width: 1px;
+    height: 100%;
+    content: '';
+    border: 1px solid black
+} */
+
+#timeline .node-header {
+	position: relative;
+}
+
+/* #timeline .node-header::before {
+	position: absolute;
+	left: -2.75em;
+	width: 1em;
+	height: 1em;
+	background: rgba(255, 217, 0, 0.5);
+	border-radius: 1em;
+	content: "";
+} */
+
+#timeline .node:first-of-type {
+	border-top: none;
+}
+
+#timeline h2,
+#timeline h3,
+#timeline h4 {
+	border-bottom: none;
+	line-height: 1;
+	margin: 0;
+}
+
+#timeline h4 {
+	margin-top: auto;
+}
+
+#timeline .node .node-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.4em;
+}
+
+#timeline p {
+	margin: 1em 0;
+}
+
+#timeline p:last-of-type {
+	margin-bottom: 0;
+}
+
+#timeline .featured-image {
+	width: 100%;
+	height: 400px;
+	margin: 1em auto;
+}
+
+#timeline .featured-image img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+#copy-button {
+	position: fixed;
+	top: 0;
+	right: 0;
+}
+
+nav#decades {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 4;
+}
