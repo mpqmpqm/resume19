@@ -98,7 +98,7 @@ export function Chart({ prevDayCount }) {
 								{
 									timestamps: []
 								},
-								{ merge: false }
+								{ merge: true }
 							)
 						}
 						const emojiData = await res.data()

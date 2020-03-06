@@ -1,0 +1,22 @@
+# Start with a 50/50 shot good or bad
+# Once inside a day, then roll for predominant buttons. Buttons that correspond to day roll are favored.
+# Really only need five clicks
+
+For each day doc:
+1. Roll for good day or bad day
+  2. if good day, then highest chances for kiss, warm, laugh, lower chance for question, thumbs-down
+    3. Roll five times:
+      if (Math.random () <= .7) {
+        click day-predominant button
+      }
+      else {
+        click non-day-predominant button
+      }
+  return roll
+
+Roll again. Previous roll is favored, unless streak:
+  if (Math.random () < .7) roll equals previous roll
+    if (Math.random () > .streakCount) plus streakCount
+    
+
+  else roll, streakCount = 1

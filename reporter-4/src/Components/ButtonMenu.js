@@ -8,7 +8,7 @@ export const ButtonMenu = () => {
 		todayString,
 		setTodayString,
 		getTodayString,
-		todayDoc
+		todayDocs
 	} = useToday()
 
 	const { firestore } = useContext(FireContext)
@@ -19,14 +19,15 @@ export const ButtonMenu = () => {
 	}
 
 	function addOne(emoji) {
-		todayDoc
-			.update({
-				[emoji]: firestore.FieldValue.arrayUnion(new Date())
-			})
-			.catch(error => console.log(error))
 		if (todayString !== getTodayString()) {
 			setTodayString(getTodayString())
 		}
+
+		todayDocs[emoji]
+			.update({
+				timestamps: firestore.FieldValue.arrayUnion(new Date())
+			})
+			.catch(error => console.log(error))
 	}
 
 	return (

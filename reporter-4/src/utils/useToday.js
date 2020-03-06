@@ -111,7 +111,8 @@ export const TodayContextProvider = ({ children }) => {
 				setTodayString,
 				getTodayString,
 				todayData,
-				todayDispatch
+				todayDispatch,
+				todayDocs
 			}}
 		>
 			{children}

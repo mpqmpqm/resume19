@@ -4,6 +4,7 @@ import { ButtonMenu } from "./Components/ButtonMenu"
 import { useAuth } from "./AuthState"
 import { ChartPicker } from "./Components/ChartPicker"
 import { useToday } from "./utils/useToday"
+import { Demo } from "./utils/setDemo"
 
 function App() {
 	const { state, dispatch } = useAuth()
@@ -24,6 +25,7 @@ function App() {
 		</>
 	) : (
 		<div className="App">
+			{/* <Demo /> */}
 			<ChartPicker />
 			<ButtonMenu />
 		</div>
