@@ -82,7 +82,18 @@ export function Chart({ prevDayCount }) {
 			return
 		}
 		let prevDayData = []
-		// setPrevDayData([])
+
+		/* let prevDayData = {		
+		// "😘": {
+			[date]: count,
+			[date]: count
+		},
+		// "😊": [],
+		// "😃": [],
+		// "👎": [],
+		// "❓": []
+		}*/
+
 		const previousDayDocs = getPreviousDayDocs(prevDayCount, db)
 		let outerPromise
 		for (const dayDoc of previousDayDocs) {
@@ -104,14 +115,18 @@ export function Chart({ prevDayCount }) {
 						dayData["date"] = res.ref.path.match(
 							/\w{3} \d{2} \d{4}/g
 						)[0]
+						//prevDayData[emoji][res.ref.path.match(/\w{3} \d{2} \d{4}/g)[0]] = emojiData["timestamps"].length
 						dayData[emoji] = emojiData["timestamps"].length
 						return dayData
-						// console.log(dayData)
 					})
 					.catch(err => console.error(err))
 			}
 			outerPromise = promise
 				.then(async res => {
+					/*
+
+					*/
+
 					prevDayData = [...prevDayData, res]
 					return prevDayData
 				})

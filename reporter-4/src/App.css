@@ -11,7 +11,7 @@ button:active {
 }
 
 .button-menu {
-	position: absolute;
+	/* position: absolute; */
 	display: grid;
 	height: 40%;
 	width: 92%;

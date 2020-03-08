@@ -8,6 +8,7 @@ export const ChartPicker = () => {
 	function handleSubmit(e) {
 		e.preventDefault()
 		setPicker(Number(inputValue))
+		setInputValue(``)
 	}
 
 	function handleChange(e) {

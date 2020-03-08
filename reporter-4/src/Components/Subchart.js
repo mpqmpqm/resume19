@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useToday } from "../utils/useToday"
 import { SubSubChart } from "./SubSubChart"
+import { Echart } from "./EChart"
 
 export const Subchart = ({ prevDayData, todayData }) => {
 	const { todayString } = useToday()
@@ -43,11 +44,15 @@ export const Subchart = ({ prevDayData, todayData }) => {
 	return (
 		<div className="chart">
 			{Object.keys(todayParsed).length ? (
-				<SubSubChart
+				<Echart
 					prevDataParsed={prevDayData}
 					todayParsed={todayParsed}
 				/>
 			) : (
+				// <SubSubChart
+				// 	prevDataParsed={prevDayData}
+				// 	todayParsed={todayParsed}
+				// />
 				<div>
 					<button onClick={() => console.log(`tester`)}>wut</button>
 				</div>
