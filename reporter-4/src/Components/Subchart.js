@@ -17,7 +17,8 @@ export const Subchart = ({ prevDayData, todayData }) => {
 						Object.keys(todayData).reduce((sum, emoji) => {
 							return sum + todayData[emoji]["timestamps"].length
 						}, 0)) *
-						100 || 0
+						100 || 0,
+				count: todayData[emoji]["timestamps"].length
 			}
 		]
 		return endObj

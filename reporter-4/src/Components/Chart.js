@@ -176,7 +176,8 @@ export function Chart({ prevDayCount }) {
 												.reduce((sum, emoji) => {
 													return sum + res[i][emoji]
 												}, 0)) *
-											100 || 0
+											100 || 0,
+									count: res[i][emoji]
 								},
 								...endArray
 							]
