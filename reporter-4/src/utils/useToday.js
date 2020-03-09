@@ -7,16 +7,16 @@ const TodayContext = React.createContext()
 
 export const TodayContextProvider = ({ children }) => {
 	const getTodayString = () => {
-		return new Date().toDateString().slice(4)
+		return new Date().toDateString()
 	}
 	const [todayString, setTodayString] = useState(getTodayString)
 	const { db } = useContext(FireContext)
 
 	const todayDocs = useMemo(() => {
 		const todayCollection = db.collection(
-			`users/test/${todayString.slice(-4)}/${todayString.slice(
-				0,
-				3
+			`users/demo/${todayString.slice(-4)}/${todayString.slice(
+				4,
+				7
 			)} ${todayString.slice(-4)}/${todayString}`
 		)
 

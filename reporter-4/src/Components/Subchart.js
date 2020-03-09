@@ -11,14 +11,15 @@ export const Subchart = ({ prevDayData, todayData }) => {
 	let todayParsed = Object.keys(todayData).reduce((endObj, emoji) => {
 		endObj[emoji] = [
 			{
-				date: todayString,
+				date: todayString.slice(4),
 				percent:
 					(todayData[emoji]["timestamps"].length /
 						Object.keys(todayData).reduce((sum, emoji) => {
 							return sum + todayData[emoji]["timestamps"].length
 						}, 0)) *
 						100 || 0,
-				count: todayData[emoji]["timestamps"].length
+				count: todayData[emoji]["timestamps"].length,
+				day: todayString.slice(0, 3)
 			}
 		]
 		return endObj

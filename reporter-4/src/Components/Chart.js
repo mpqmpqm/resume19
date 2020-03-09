@@ -112,9 +112,12 @@ export function Chart({ prevDayCount }) {
 							)
 						}
 						const emojiData = await res.data()
-						dayData["date"] = res.ref.path.match(
-							/\w{3} \d{2} \d{4}/g
-						)[0]
+						dayData["date"] = res.ref.path
+							.match(/\w{3} \w{3} \d{2} \d{4}/g)[0]
+							.slice(4)
+						dayData["day"] = res.ref.path
+							.match(/\w{3} \w{3} \d{2} \d{4}/g)[0]
+							.slice(0, 3)
 						//prevDayData[emoji][res.ref.path.match(/\w{3} \d{2} \d{4}/g)[0]] = emojiData["timestamps"].length
 						dayData[emoji] = emojiData["timestamps"].length
 						return dayData
@@ -172,12 +175,15 @@ export function Chart({ prevDayCount }) {
 									percent:
 										(res[i][emoji] /
 											Object.keys(res[i])
-												.filter(key => key !== `date`)
+												.filter(
+													key => key !== `date` && key !== `day`
+												)
 												.reduce((sum, emoji) => {
 													return sum + res[i][emoji]
 												}, 0)) *
 											100 || 0,
-									count: res[i][emoji]
+									count: res[i][emoji],
+									day: entry["day"]
 								},
 								...endArray
 							]

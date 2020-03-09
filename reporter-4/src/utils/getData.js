@@ -38,9 +38,9 @@ export function getPreviousDateStrings(numDays) {
 	return new Array(numDays)
 		.fill("")
 		.map((el, i) =>
-			new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * (i + 1))
-				.toDateString()
-				.slice(4)
+			new Date(
+				new Date().getTime() - 1000 * 60 * 60 * 24 * (i + 1)
+			).toDateString()
 		)
 }
 
