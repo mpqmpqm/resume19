@@ -7,7 +7,7 @@ export const Demo = () => {
 	let i = 0
 
 	useEffect(() => {
-		console.log(i)
+		// console.log(i)
 		const previousDayDocs = getPreviousDayDocs(120, db)
 
 		function roll(prevRoll = true, streak) {
@@ -99,23 +99,23 @@ export const Demo = () => {
 			})
 		}
 		const objects = parse(rolls)
-		console.log(JSON.stringify(objects))
+		// console.log(JSON.stringify(objects))
 
-		// let i = 0
+		const grep = /\w{3} \w{3} \d{2} \d{4}/g
 
 		for (const dayDoc of previousDayDocs) {
 			let promise
 			for (const emoji of Object.keys(dayDoc)) {
+				const date = dayDoc[emoji].path.match(grep)[0].slice(4)
+				const day = dayDoc[emoji].path.match(grep)[0].slice(0, 3)
 				promise = dayDoc[emoji].get().then(async res => {
-					// if (res.exists) {
-					console.log(i)
 					const array = new Array(objects[i][emoji]).fill(`demo`)
-					console.log(`${emoji}: ${objects[i][emoji]}`)
-					console.log(array)
 					dayDoc[emoji]
 						.set(
 							{
-								timestamps: array
+								date: date,
+								timestamps: array,
+								day: day
 							},
 							{ merge: false }
 						)

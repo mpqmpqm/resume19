@@ -84,9 +84,11 @@ export function Chart({ prevDayCount }) {
 		let prevDayData = []
 
 		/* let prevDayData = {		
-		// "😘": {
-			[date]: count,
-			[date]: count
+		// "😘": [
+			{date,
+			count,
+			day}
+		]
 		},
 		// "😊": [],
 		// "😃": [],
@@ -99,25 +101,30 @@ export function Chart({ prevDayCount }) {
 		for (const dayDoc of previousDayDocs) {
 			let dayData = {}
 			let promise
+			const grep = /\w{3} \w{3} \d{2} \d{4}/g
 			for (const emoji of Object.keys(dayDoc)) {
+				console.log(dayDoc)
+				const date = dayDoc[emoji].path.match(grep)[0].slice(4)
+				const day = dayDoc[emoji].path.match(grep)[0].slice(0, 3)
 				promise = dayDoc[emoji]
 					.get()
 					.then(async res => {
 						if (!res.exists) {
 							dayDoc[emoji].set(
 								{
-									timestamps: []
+									date: date,
+									timestamps: [],
+									day: day
 								},
 								{ merge: true }
 							)
 						}
 						const emojiData = await res.data()
-						dayData["date"] = res.ref.path
-							.match(/\w{3} \w{3} \d{2} \d{4}/g)[0]
-							.slice(4)
-						dayData["day"] = res.ref.path
-							.match(/\w{3} \w{3} \d{2} \d{4}/g)[0]
-							.slice(0, 3)
+						// const grep = /\w{3} \w{3} \d{2} \d{4}/g
+						// const date = res.ref.path.match(grep)[0].slice(4)
+						// const day = res.ref.path.match(grep)[0].slice(0, 3)
+						dayData["date"] = emojiData[`date`]
+						dayData["day"] = emojiData[`day`]
 						//prevDayData[emoji][res.ref.path.match(/\w{3} \d{2} \d{4}/g)[0]] = emojiData["timestamps"].length
 						dayData[emoji] = emojiData["timestamps"].length
 						return dayData

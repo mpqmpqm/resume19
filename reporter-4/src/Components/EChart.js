@@ -4,6 +4,7 @@ import ReactEcharts from "echarts-for-react"
 
 export const Echart = ({ prevDataParsed, todayParsed }) => {
 	const prevDayCount = prevDataParsed[`😘`].length
+	console.log(prevDataParsed)
 	return (
 		<ReactEcharts
 			option={{
@@ -83,7 +84,7 @@ export const Echart = ({ prevDataParsed, todayParsed }) => {
 								lineStyle: {
 									color: `white`
 								},
-								smooth: 0.1,
+								smooth: 0.2,
 								datasetIndex: 4 - i,
 								name: emoji
 							}
