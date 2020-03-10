@@ -76,11 +76,14 @@ export const TodayContextProvider = ({ children }) => {
 				if (!doc.exists) {
 					todayDocs[emoji].set(
 						{
-							timestamps: []
+							timestamps: [],
+							date: todayString.slice(4),
+							day: todayString.slice(0, 3)
 						},
-						{ merge: true }
+						{ merge: false }
 					)
 				}
+				return doc.data()
 			})
 		})
 		const [kiss, warm, laugh, thumbsDown, question] = [
@@ -90,14 +93,19 @@ export const TodayContextProvider = ({ children }) => {
 			"👎",
 			"❓"
 		].map(emoji => {
-			return todayDocs[emoji].onSnapshot(doc => {
+			return todayDocs[emoji].onSnapshot(async doc => {
+				const data = await doc.data()
 				todayDispatch({
 					type: emoji,
-					payload: doc.data()
+					payload: {
+						date: data[`date`],
+						count: data[`timestamps`].length,
+						day: data
+					}
 				})
 			})
 		})
-		setTodayReady(true)
+		// setTodayReady(true)
 		return () => {
 			kiss()
 			warm()
@@ -116,7 +124,8 @@ export const TodayContextProvider = ({ children }) => {
 				todayData,
 				todayDispatch,
 				todayDocs,
-				todayReady
+				todayReady,
+				setTodayReady
 			}}
 		>
 			{children}

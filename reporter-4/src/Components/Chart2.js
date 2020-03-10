@@ -113,7 +113,7 @@ export function Chart2({ prevDayCount }) {
 	return (
 		<>
 			<div>
-				{Object.keys(prevDayData).length && todayReady ? (
+				{Object.keys(prevDayData).length ? (
 					<>
 						<Subchart
 							prevDayData={prevDayData}

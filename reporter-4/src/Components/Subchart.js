@@ -4,24 +4,34 @@ import { SubSubChart } from "./SubSubChart"
 import { Echart } from "./EChart"
 
 export const Subchart = ({ prevDayData, todayData }) => {
-	const { todayString } = useToday()
+	const { todayString, todayReady, setTodayReady } = useToday()
 
-	let todayParsed = Object.keys(todayData).reduce((endObj, emoji) => {
-		endObj[emoji] = [
-			{
-				date: todayString.slice(4),
-				percent:
-					(todayData[emoji]["timestamps"].length /
-						Object.keys(todayData).reduce((sum, emoji) => {
-							return sum + todayData[emoji]["timestamps"].length
-						}, 0)) *
-						100 || 0,
-				count: todayData[emoji]["timestamps"].length,
-				day: todayString.slice(0, 3)
-			}
-		]
-		return endObj
-	}, {})
+	const [todayParsed, setTodayParsed] = useState({})
+
+	useEffect(() => {
+		let todayParsed = Object.keys(todayData).reduce(
+			(endObj, emoji) => {
+				endObj[emoji] = [
+					{
+						date: todayString.slice(4),
+						percent:
+							(todayData[emoji][`count`] /
+								Object.keys(todayData).reduce((sum, emoji) => {
+									return sum + todayData[emoji][`count`]
+								}, 0)) *
+								100 || 0,
+						count: todayData[emoji][`count`],
+						day: todayString.slice(0, 3)
+					}
+				]
+				return endObj
+			},
+			{}
+		)
+		setTodayParsed(todayParsed)
+		setTodayReady(true)
+	}, [todayData])
+
 	// console.log(todayParsed)
 
 	// useEffect(() => {
