@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 			}
 		},
 		{
-			isAuthenticated: false,
+			isAuthenticated: true,
 			user: null
 		}
 	)

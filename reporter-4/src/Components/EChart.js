@@ -4,7 +4,6 @@ import ReactEcharts from "echarts-for-react"
 
 export const Echart = ({ prevDataParsed, todayParsed }) => {
 	const prevDayCount = prevDataParsed[`😘`].length
-	console.log(prevDataParsed)
 	return (
 		<ReactEcharts
 			option={{

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Chart } from "./Chart"
+import { Chart2 } from "./Chart2"
 
 export const ChartPicker = () => {
 	const [inputValue, setInputValue] = useState(7)
@@ -17,7 +17,7 @@ export const ChartPicker = () => {
 
 	return (
 		<>
-			<Chart prevDayCount={picker} />
+			<Chart2 prevDayCount={picker} />
 			<form onSubmit={handleSubmit}>
 				<input value={inputValue} onChange={handleChange}></input>
 				<button>Submit</button>

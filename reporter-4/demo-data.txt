@@ -20,3 +20,14 @@ Roll again. Previous roll is favored, unless streak:
     
 
   else roll, streakCount = 1
+
+  prevDayData = {
+    😘: [
+      {date, count, day},
+      {date, count, day}
+    ],
+    😊: [
+      {},
+      {}
+    ]
+  }

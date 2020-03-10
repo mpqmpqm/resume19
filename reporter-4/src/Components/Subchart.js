@@ -6,8 +6,6 @@ import { Echart } from "./EChart"
 export const Subchart = ({ prevDayData, todayData }) => {
 	const { todayString } = useToday()
 
-	// const [todayParsed, setTodayParsed] = useState([])
-
 	let todayParsed = Object.keys(todayData).reduce((endObj, emoji) => {
 		endObj[emoji] = [
 			{

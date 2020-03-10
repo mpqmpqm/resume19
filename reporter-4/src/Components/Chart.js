@@ -103,7 +103,6 @@ export function Chart({ prevDayCount }) {
 			let promise
 			const grep = /\w{3} \w{3} \d{2} \d{4}/g
 			for (const emoji of Object.keys(dayDoc)) {
-				console.log(dayDoc)
 				const date = dayDoc[emoji].path.match(grep)[0].slice(4)
 				const day = dayDoc[emoji].path.match(grep)[0].slice(0, 3)
 				promise = dayDoc[emoji]
