@@ -10,6 +10,7 @@ export const TodayContextProvider = ({ children }) => {
 		return new Date().toDateString()
 	}
 	const [todayString, setTodayString] = useState(getTodayString)
+	const [todayReady, setTodayReady] = useState(false)
 	const { db } = useContext(FireContext)
 
 	const todayDocs = useMemo(() => {
@@ -69,6 +70,7 @@ export const TodayContextProvider = ({ children }) => {
 	)
 
 	useEffect(() => {
+		setTodayReady(false)
 		Object.keys(todayDocs).forEach(emoji => {
 			todayDocs[emoji].get().then(doc => {
 				if (!doc.exists) {
@@ -95,6 +97,7 @@ export const TodayContextProvider = ({ children }) => {
 				})
 			})
 		})
+		setTodayReady(true)
 		return () => {
 			kiss()
 			warm()
@@ -112,7 +115,8 @@ export const TodayContextProvider = ({ children }) => {
 				getTodayString,
 				todayData,
 				todayDispatch,
-				todayDocs
+				todayDocs,
+				todayReady
 			}}
 		>
 			{children}

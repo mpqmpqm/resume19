@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Chart2 } from "./Chart2"
 
 export const ChartPicker = () => {
-	const [inputValue, setInputValue] = useState(7)
+	const [inputValue, setInputValue] = useState(2)
 	const [picker, setPicker] = useState(inputValue)
 
 	function handleSubmit(e) {
