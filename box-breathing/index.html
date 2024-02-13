@@ -33,57 +33,16 @@
                 console.error(message);
             }
 
-            const beep = (frequency, duration) => {
-                try {
-                    if (!audioContext) {
-                        audioContext = new (window.AudioContext ||
-                            window.webkitAudioContext)();
-                    }
-
-                    if (audioContext.state === 'suspended') {
-                        audioContext
-                            .resume()
-                            .catch((err) => logError(err.message));
-                    }
-
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-
-                    oscillator.type = 'sine';
-                    oscillator.frequency.setValueAtTime(
-                        frequency,
-                        audioContext.currentTime
-                    );
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-
-                    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-                    gainNode.gain.linearRampToValueAtTime(
-                        1,
-                        audioContext.currentTime + 0.01
-                    );
-                    gainNode.gain.linearRampToValueAtTime(
-                        0,
-                        audioContext.currentTime + duration
-                    );
-
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + duration);
-                } catch (error) {
-                    logError(error.message);
-                }
-            };
-
             document
                 .getElementById('toggleBeep')
-                .addEventListener('click', function () {
-                    try {
-                        if (!isPlaying) {
-                            if (!audioContext) {
-                                audioContext = new (window.AudioContext ||
-                                    window.webkitAudioContext)();
-                            }
+                .addEventListener('click', () => {
+                    if (!isPlaying) {
+                        if (!audioContext) {
+                            audioContext = new (window.AudioContext ||
+                                window.webkitAudioContext)();
+                        }
 
+                        const startBeeping = () => {
                             const interval = parseInt(
                                 document.getElementById('interval').value,
                                 10
@@ -92,30 +51,64 @@
                                 document.getElementById('frequency').value,
                                 10
                             );
-                            const duration = parseFloat(
-                                document.getElementById('duration').value
-                            );
+                            const duration =
+                                parseFloat(
+                                    document.getElementById('duration').value
+                                ) * 1000; // Convert to milliseconds
 
-                            intervalID = setInterval(
-                                () => beep(frequency, duration),
-                                interval
-                            );
+                            intervalID = setInterval(() => {
+                                const oscillator =
+                                    audioContext.createOscillator();
+                                const gainNode = audioContext.createGain();
+
+                                oscillator.type = 'sine';
+                                oscillator.frequency.setValueAtTime(
+                                    frequency,
+                                    audioContext.currentTime
+                                );
+                                oscillator.connect(gainNode);
+                                gainNode.connect(audioContext.destination);
+
+                                gainNode.gain.setValueAtTime(
+                                    0,
+                                    audioContext.currentTime
+                                );
+                                gainNode.gain.linearRampToValueAtTime(
+                                    1,
+                                    audioContext.currentTime + 0.01
+                                );
+                                gainNode.gain.linearRampToValueAtTime(
+                                    0,
+                                    audioContext.currentTime + duration / 1000
+                                );
+
+                                oscillator.start();
+                                oscillator.stop(
+                                    audioContext.currentTime + duration / 1000
+                                );
+                            }, interval);
+
+                            document.getElementById('toggleBeep').textContent =
+                                'Stop';
                             isPlaying = true;
-                            this.textContent = 'Stop';
+                        };
+
+                        if (audioContext.state === 'suspended') {
+                            audioContext
+                                .resume()
+                                .then(startBeeping)
+                                .catch(logError);
                         } else {
-                            if (
-                                audioContext &&
-                                audioContext.state !== 'closed'
-                            ) {
-                                audioContext.close(); // Close the context to ensure it can be restarted later
-                            }
-                            audioContext = null; // Reset the context for future use
-                            clearInterval(intervalID);
-                            isPlaying = false;
-                            this.textContent = 'Start';
+                            startBeeping();
                         }
-                    } catch (error) {
-                        logError(error.message);
+                    } else {
+                        clearInterval(intervalID);
+                        document.getElementById('toggleBeep').textContent =
+                            'Start';
+                        isPlaying = false;
+                        // Optionally close the audio context if not planning to start again, to clean up resources
+                        // audioContext.close();
+                        // audioContext = null;
                     }
                 });
         </script>
