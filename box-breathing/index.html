@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Box Breathing Helper</title>
+    </head>
+    <body>
+        <h2>Box Breathing Helper</h2>
+        <div>
+            <label for="interval">Interval (ms):</label>
+            <input type="number" id="interval" value="6000" />
+        </div>
+        <div>
+            <label for="frequency">Frequency (Hz):</label>
+            <input type="number" id="frequency" value="420" />
+        </div>
+        <div>
+            <label for="duration">Duration (s):</label>
+            <input type="number" id="duration" value="1" />
+        </div>
+        <button id="toggleBeep">Start</button>
+
+        <script>
+            const audioContext = new (window.AudioContext ||
+                window.webkitAudioContext)();
+            let isPlaying = false;
+            let intervalID;
+
+            const beep = (frequency, duration) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(
+                    frequency,
+                    audioContext.currentTime
+                );
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(
+                    1,
+                    audioContext.currentTime + 0.01
+                );
+                gainNode.gain.setValueAtTime(
+                    1,
+                    audioContext.currentTime + 0.01
+                );
+                gainNode.gain.linearRampToValueAtTime(
+                    0,
+                    audioContext.currentTime + duration
+                );
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration);
+            };
+
+            document
+                .getElementById('toggleBeep')
+                .addEventListener('click', function () {
+                    if (!isPlaying) {
+                        const interval = parseInt(
+                            document.getElementById('interval').value,
+                            10
+                        );
+                        const frequency = parseInt(
+                            document.getElementById('frequency').value,
+                            10
+                        );
+                        const duration = parseInt(
+                            document.getElementById('duration').value,
+                            10
+                        );
+
+                        intervalID = setInterval(
+                            () => beep(frequency, duration),
+                            interval
+                        );
+                        isPlaying = true;
+                        this.textContent = 'Stop';
+                    } else {
+                        clearInterval(intervalID);
+                        isPlaying = false;
+                        this.textContent = 'Start';
+                    }
+                });
+        </script>
+    </body>
+</html>
