@@ -24,8 +24,7 @@
         <div id="errorLog" style="color: red; margin-top: 20px"></div>
 
         <script>
-            let audioContext = new (window.AudioContext ||
-                window.webkitAudioContext)();
+            let audioContext;
             let isPlaying = false;
             let intervalID;
 
@@ -35,18 +34,19 @@
                 console.error(message);
             }
 
-            function beep(frequency = 420, duration = 1000) {
+            function initAudioContext() {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext ||
+                        window.webkitAudioContext)();
+                }
                 if (audioContext.state === 'suspended') {
-                    audioContext
-                        .resume()
-                        .then(() => playBeep(frequency, duration))
-                        .catch(logError);
-                } else {
-                    playBeep(frequency, duration);
+                    audioContext.resume().catch(logError);
                 }
             }
 
-            function playBeep(frequency, duration) {
+            function beep(frequency = 420, duration = 1000) {
+                initAudioContext(); // Ensure the AudioContext is initialized or resumed
+
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
 
@@ -76,6 +76,8 @@
                 .getElementById('toggleBeep')
                 .addEventListener('click', function () {
                     if (!isPlaying) {
+                        initAudioContext(); // Ensure the AudioContext is ready before starting the interval
+
                         const interval = parseInt(
                             document.getElementById('interval').value,
                             10
@@ -87,7 +89,7 @@
                         const duration =
                             parseFloat(
                                 document.getElementById('duration').value
-                            ) * 1000;
+                            ) * 1000; // Convert to milliseconds
 
                         intervalID = setInterval(
                             () => beep(frequency, duration),
@@ -105,6 +107,7 @@
             document
                 .getElementById('playNow')
                 .addEventListener('click', function () {
+                    initAudioContext(); // Direct user action to initialize or resume AudioContext
                     beep(
                         parseInt(
                             document.getElementById('frequency').value,
