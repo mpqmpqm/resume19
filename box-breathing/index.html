@@ -22,12 +22,21 @@
         <button id="toggleBeep">Start</button>
 
         <script>
-            const audioContext = new (window.AudioContext ||
-                window.webkitAudioContext)();
+            let audioContext;
             let isPlaying = false;
             let intervalID;
 
             const beep = (frequency, duration) => {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext ||
+                        window.webkitAudioContext)();
+                }
+
+                // Check if we need to resume the AudioContext on iOS devices
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
 
@@ -44,10 +53,6 @@
                     1,
                     audioContext.currentTime + 0.01
                 );
-                gainNode.gain.setValueAtTime(
-                    1,
-                    audioContext.currentTime + 0.01
-                );
                 gainNode.gain.linearRampToValueAtTime(
                     0,
                     audioContext.currentTime + duration
@@ -61,6 +66,11 @@
                 .getElementById('toggleBeep')
                 .addEventListener('click', function () {
                     if (!isPlaying) {
+                        if (!audioContext) {
+                            audioContext = new (window.AudioContext ||
+                                window.webkitAudioContext)();
+                        }
+
                         const interval = parseInt(
                             document.getElementById('interval').value,
                             10
@@ -69,9 +79,8 @@
                             document.getElementById('frequency').value,
                             10
                         );
-                        const duration = parseInt(
-                            document.getElementById('duration').value,
-                            10
+                        const duration = parseFloat(
+                            document.getElementById('duration').value
                         );
 
                         intervalID = setInterval(
@@ -81,6 +90,10 @@
                         isPlaying = true;
                         this.textContent = 'Stop';
                     } else {
+                        if (audioContext && audioContext.state !== 'closed') {
+                            audioContext.close(); // Close the context to ensure it can be restarted later
+                        }
+                        audioContext = null; // Reset the context for future use
                         clearInterval(intervalID);
                         isPlaying = false;
                         this.textContent = 'Start';
