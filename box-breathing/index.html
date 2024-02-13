@@ -20,83 +20,102 @@
             <input type="number" id="duration" value="1" />
         </div>
         <button id="toggleBeep">Start</button>
+        <div id="errorLog" style="color: red; margin-top: 20px"></div>
 
         <script>
             let audioContext;
             let isPlaying = false;
             let intervalID;
 
+            function logError(message) {
+                const errorLog = document.getElementById('errorLog');
+                errorLog.textContent = `Error: ${message}`;
+                console.error(message);
+            }
+
             const beep = (frequency, duration) => {
-                if (!audioContext) {
-                    audioContext = new (window.AudioContext ||
-                        window.webkitAudioContext)();
+                try {
+                    if (!audioContext) {
+                        audioContext = new (window.AudioContext ||
+                            window.webkitAudioContext)();
+                    }
+
+                    if (audioContext.state === 'suspended') {
+                        audioContext
+                            .resume()
+                            .catch((err) => logError(err.message));
+                    }
+
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(
+                        frequency,
+                        audioContext.currentTime
+                    );
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                    gainNode.gain.linearRampToValueAtTime(
+                        1,
+                        audioContext.currentTime + 0.01
+                    );
+                    gainNode.gain.linearRampToValueAtTime(
+                        0,
+                        audioContext.currentTime + duration
+                    );
+
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + duration);
+                } catch (error) {
+                    logError(error.message);
                 }
-
-                // Check if we need to resume the AudioContext on iOS devices
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume();
-                }
-
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(
-                    frequency,
-                    audioContext.currentTime
-                );
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-
-                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-                gainNode.gain.linearRampToValueAtTime(
-                    1,
-                    audioContext.currentTime + 0.01
-                );
-                gainNode.gain.linearRampToValueAtTime(
-                    0,
-                    audioContext.currentTime + duration
-                );
-
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + duration);
             };
 
             document
                 .getElementById('toggleBeep')
                 .addEventListener('click', function () {
-                    if (!isPlaying) {
-                        if (!audioContext) {
-                            audioContext = new (window.AudioContext ||
-                                window.webkitAudioContext)();
-                        }
+                    try {
+                        if (!isPlaying) {
+                            if (!audioContext) {
+                                audioContext = new (window.AudioContext ||
+                                    window.webkitAudioContext)();
+                            }
 
-                        const interval = parseInt(
-                            document.getElementById('interval').value,
-                            10
-                        );
-                        const frequency = parseInt(
-                            document.getElementById('frequency').value,
-                            10
-                        );
-                        const duration = parseFloat(
-                            document.getElementById('duration').value
-                        );
+                            const interval = parseInt(
+                                document.getElementById('interval').value,
+                                10
+                            );
+                            const frequency = parseInt(
+                                document.getElementById('frequency').value,
+                                10
+                            );
+                            const duration = parseFloat(
+                                document.getElementById('duration').value
+                            );
 
-                        intervalID = setInterval(
-                            () => beep(frequency, duration),
-                            interval
-                        );
-                        isPlaying = true;
-                        this.textContent = 'Stop';
-                    } else {
-                        if (audioContext && audioContext.state !== 'closed') {
-                            audioContext.close(); // Close the context to ensure it can be restarted later
+                            intervalID = setInterval(
+                                () => beep(frequency, duration),
+                                interval
+                            );
+                            isPlaying = true;
+                            this.textContent = 'Stop';
+                        } else {
+                            if (
+                                audioContext &&
+                                audioContext.state !== 'closed'
+                            ) {
+                                audioContext.close(); // Close the context to ensure it can be restarted later
+                            }
+                            audioContext = null; // Reset the context for future use
+                            clearInterval(intervalID);
+                            isPlaying = false;
+                            this.textContent = 'Start';
                         }
-                        audioContext = null; // Reset the context for future use
-                        clearInterval(intervalID);
-                        isPlaying = false;
-                        this.textContent = 'Start';
+                    } catch (error) {
+                        logError(error.message);
                     }
                 });
         </script>
